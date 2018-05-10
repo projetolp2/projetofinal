@@ -25,7 +25,7 @@ public class Alcalinos extends Elementos{
         switch (num) {
             case 1:
                 super.setNome("Litio"); //Manda o nome para a classe Elementos.
-                super.numeroAtomico = "2";
+                super.numeroAtomico = "3";
                 //super.setImagem(new ImageIcon(getClass().getResource("/Imagens/Litio.jpg")));
                 a.setText("Li");
                 break;

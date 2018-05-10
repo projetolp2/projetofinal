@@ -33,7 +33,7 @@ public class Elementos extends JButton{
             n.setBackground(getBackground()); //Pega a cor do botao e joga no outro.
             e.setText(getText()); //Pegua o texto do botao e insere nesse botao (Apenas o simbolo)
             n.setText(nome); //Aqui, o botao recebe o nome real do elemento pelo metodo criado la em baixo.
-            label.setText(numeroAtomico);
+            //label.setText(numeroAtomico); //Coloca o numero atomico do elemento.
         }
 
         @Override
@@ -46,7 +46,7 @@ public class Elementos extends JButton{
             n.setBackground(null); //Idem ao de cima
             e.setText(""); //Coloca uma string vazia ao botao.
             n.setText(""); //Idem ao de cima.
-            label.setText("");
+            //label.setText(""); //Retira o numero atomico do elemento.
         }
         });
         super.setSize(55, 65);

@@ -92,14 +92,14 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             .addGroup(canvasLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(546, Short.MAX_VALUE))
+                .addContainerGap(580, Short.MAX_VALUE))
         );
         canvasLayout.setVerticalGroup(
             canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvasLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Ajuda");
@@ -118,11 +118,13 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 1239, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(canvas, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(canvas, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,7 +184,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
 
     private void tabelaPeriodica() {
         int num;
-        for (int i = 0; i < 8; i++) { //Cria os labels e coloca nos periodos (Vertical)
+        for (int i = 0; i < 7; i++) { //Cria os labels e coloca nos periodos (Vertical)
             num = i + 1;
             periodos = new JLabel();
             periodos.setText("" + num);
@@ -226,6 +228,18 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         for (int i = 0; i < 7; i++) {
             GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             nobres.setGasesNobres(nobres, posX, posY, largura, altura, i, canvas);
+        }
+        
+        /*MetaisTransiçaoInterna interna1 = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
+        MetaisTransiçaoInterna interna2 = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
+        interna1.setMetaisTransiçaoInterna(interna1, posX, posY, largura, altura, 2, 7, canvas);
+        interna2.setMetaisTransiçaoInterna(interna2, posX, posY, largura, altura, 2, 8, canvas);*/
+        
+        for (int i = 2; i < 15; i++) {
+            for (int j = 7; j < 9; j++) {
+                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
+                interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
+            }
         }
     }
 }
