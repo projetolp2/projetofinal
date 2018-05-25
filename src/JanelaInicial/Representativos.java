@@ -43,6 +43,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "É UM METAL DO TERCEIRO PERÍODO";
                         r.dica2 = "É UTILIZADO EM LATINHAS RECICLÁVEIS";
                         r.dica3 = "ENCONTRA-SE NA FAMÍLIA DO BORO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 3:
@@ -53,6 +54,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "UTILIZADO NAS TELAS DE TV";
                         r.dica2 = "POSSUI QUATRO CAMADAS ENERGÉTICAS";
                         r.dica3 = "SEU NOME LEMBRA “GALILEU”";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 4:
@@ -88,6 +90,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "CONSTITUINTE DA GRAFITE E DO DIAMENTE";
                         r.dica2 = "POSSUI DUAS CAMADAS ENERGÉTICAS";
                         r.dica3 = "É UM AMETAL";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 2:
@@ -124,6 +127,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "SEU TEMPO DE MEIA VIDA É MENOR DO QUE UM SEGUNDO";
                         r.dica2 = "PERTENCE À FAMÍLIA DO CARBONO";
                         r.dica3 = "POSSUI SETE CAMADAS ENERGÉTICAS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     default:
@@ -138,10 +142,10 @@ public class Representativos extends Elementos{
                         super.numeroAtomico = "7";
                         super.massaAtomica = "14,007";
                         r.setText("N");
-                        r.dica1 = "É UM GÁS MAS PODE SER ENCONTRADO NO ESTADO LÍQUIDO UTILIZADO PARA CONSERVAÇÃO DE\n" +
-                                  "MATERIAIS EM TEMPERATURAS MUITO BAIXAS";
+                        r.dica1 = "É UM GÁS MAS PODE SER ENCONTRADO NO ESTADO LÍQUIDO UTILIZADO PARA CONSERVAÇÃO DE MATERIAIS EM TEMPERATURAS MUITO BAIXAS";
                         r.dica2 = "POSSUI DUAS CAMADAS ENERGÉTICAS";
                         r.dica3 = "ENCONTRA-SE NO GRUPO VIZINHO À FAMÍLIA DO CARBONO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 2:
@@ -153,6 +157,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "AMETAL COM TRÊS CAMADAS ENERGÉTICAS";
                         r.dica2 = "ENCONTRADO DENTRO DE CAIXINHAS PEQUENAS";
                         r.dica3 = "EM NOSSA COZINHA PODE NOS AJUDAR A CONSEGUIR FOGO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 3:
@@ -171,6 +176,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "UTILIZADO EM SOMBRAS PARA OS OLHOS (MAQUIAGEM)";
                         r.dica2 = "SEMIMETAL DO 5º PERÍODO";
                         r.dica3 = "ELE É MAIS ELETRONEGATIVO DO QUE O ESTANHO E MENOS DO QUE O ARSÊNIO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 5:
@@ -198,8 +204,9 @@ public class Representativos extends Elementos{
                         super.massaAtomica = "15,999";
                         r.setText("O");
                         r.dica1 = "SEM ELE NÃO EXISTIRA A COMBUSTÃO";
-                        r.dica2 = "É UM AMETAL DO 2o PERÍODO";
+                        r.dica2 = "É UM AMETAL DO 2º PERÍODO";
                         r.dica3 = "O SEGUNDO ELEMENTO MAIS ELETRONEGATIVO DA TABELA";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 2:
@@ -211,6 +218,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "É ENCOTRADO EM CONSERVANTES DE FOGOS DE ARTIFÍCIO";
                         r.dica2 = "É UM NÃO METAL DA FAMILIA DOS CALCOGÊNIOS";
                         r.dica3 = "SEU SÍMBOLO ENCONTRA-SE NA ROUPA DO SUPER-HOMEM";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 3:
@@ -222,6 +230,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "ELEMENTO UTILIZADO EM XAMPU ANTI-CASPA";
                         r.dica2 = "AMETAL DO 4o PERÍODO";
                         r.dica3 = "ESTÁ NA FAMÍLIA DOS CALCOGÊNIOS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 4:
@@ -233,6 +242,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "ENCONTRADO EM PROTEÇÃO PARA CHUMBO DE ACUMULADORES DE BATERIA";
                         r.dica2 = "É UM SEMIMETAL NÃO RADIATIVO";
                         r.dica3 = "ESTÁ NA FAMÍLIA DOS CALCOGÊNIOS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 5:
@@ -244,6 +254,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "É UM SEMI-METAL RADIOATIVO QUE FOI DESCOBERTO POR MARIE CORRIE";
                         r.dica2 = "PERTENCE À FAMÍLIA DOS CALCOGÊNIOS";
                         r.dica3 = "SEU NÚMERO ATÔMICO ANTECEDE O DO ASTATO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 6:
@@ -254,6 +265,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "FOI UM DOS ÚLTIMOS ELEMENTOS A SEREM RECONHECIDOS PELA IUPAC";
                         r.dica2 = "É UM CALCOGÊNIO";
                         r.dica3 = "POSSUI SETE CAMADAS ENERGÉTICAS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     default:
@@ -271,6 +283,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "É MUITO UTILIZADO POR DENTISTAS";
                         r.dica2 = "ENCONTRA-SE NA FAMÍLIA DOS HALOGÊNIOS";
                         r.dica3 = "É O ELEMENTO MAIS ELETRONEGATIVO DA TABELA PERIÓDICA";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 2:
@@ -282,6 +295,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "COMPÕE O SAL DE COZINHA";
                         r.dica2 = "ENCONTRA-SE NO TERCEIRO PERÍODO AO LADO DE UM GÁS NOBRE";
                         r.dica3 = "ESTÁ NA FAMÍLIA DOS HALOGÊNIOS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 3:
@@ -300,6 +314,7 @@ public class Representativos extends Elementos{
                         r.dica1 = "É UTILIZADO PARA REDUZIR OS EFEITOS DE ISÓTOPOS RADIOATIVOS";
                         r.dica2 = "COM SUA SUBLIMAÇÃO, É POSSÍVEL VIZUALIZAR IMPRESSÕES DIGITAIS";
                         r.dica3 = "É UM HALOGÊNIO DO QUINTO PERÍODO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
                     case 5:

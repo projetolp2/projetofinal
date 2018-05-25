@@ -18,6 +18,7 @@ public class Elementos extends JButton{
     private String nome; //Variavel que recebe o nome de cada elemento.
     ImageIcon imagem;
     String numeroAtomico, massaAtomica;
+    String[] dicas = new String[3];
     JLabel label1, label2;
     ArrayList<Elementos> arrayElem;
     
@@ -75,11 +76,25 @@ public class Elementos extends JButton{
         label1 = l;
     }
     
+    public String getNumeroAtomico(){
+        return numeroAtomico;
+    }
+    
     public void setMassaAtomica(JLabel l){
         label2 = l;
     }
     
     public void setArrayList(Elementos e){
         arrayElem.add(e);
+    }
+    
+    public void setDicas(String d1, String d2, String d3){
+        dicas[0] = d1;
+        dicas[1] = d2;
+        dicas[2] = d3;
+    }
+    
+    public String getDicas(Elementos e, int i){
+        return e.dicas[i];
     }
 }

@@ -39,6 +39,7 @@ public class AlcalinosTerrosos extends Elementos{
                 at.dica1 = "UTILIZADOS EM RODAS DE LIGA LEVE";
                 at.dica2 = "É DA FAMÍLIA DOS METAIS ALCALINO-TERROSOS";
                 at.dica3 = "POSSUI TRÊS CAMADAS ENERGÉTICAS";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(at);
                 break;
             case 3:
@@ -49,6 +50,7 @@ public class AlcalinosTerrosos extends Elementos{
                 at.dica1 = "COMPÕE OS NOSSOS OSSOS E É UTILIZADO NO GESSO";
                 at.dica2 = "SUA DISTRIBUIÇÃO ELETRÔNICA TERMINA EM s²";
                 at.dica3 = "POSSUI QUATRO CAMADAS ENERGÉTICAS";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(at);
                 break;
             case 4:
@@ -57,8 +59,9 @@ public class AlcalinosTerrosos extends Elementos{
                 super.massaAtomica = "87,62";
                 at.setText("Sr");
                 at.dica1 = "UTILIZADO EM FOGOS DE ARTIFÍCIO";
-                at.dica2 = "POSSUI O SEGUNDO MAIOR RAIO ATÔMICO NA FAMÍLIA DOS METAIS ALCALINO-TERROSOS";
+                at.dica2 = "POSSUI O TERCEIRO MAIOR RAIO ATÔMICO NA FAMÍLIA DOS METAIS ALCALINO-TERROSOS";
                 at.dica3 = "UTILIZADO EM TINTAS QUE BRILHAM NO ESCURO";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(at);
                 break;
             case 5:
@@ -69,6 +72,7 @@ public class AlcalinosTerrosos extends Elementos{
                 at.dica1 = "SEU RAIO ATÔMICO É MAIOR QUE O DO OURO";
                 at.dica2 = "POSSUI SEIS CAMADAS ENERGÉTICAS";
                 at.dica3 = "É UM METAL ALCALINO –TERROSSO USADO EM FOGOS DE ARTIFÍCIO E CHAPAS DE ESTÔMAGO";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(at);
                 break;
             case 6:

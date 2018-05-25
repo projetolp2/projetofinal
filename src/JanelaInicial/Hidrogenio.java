@@ -28,6 +28,7 @@ public class Hidrogenio extends Elementos{
         dica1 = "UTILIZADO COMO COMBUSTÍVEL PARA FOGUETES;";
         dica2 = "POSSUI O MENOR RAIO ATÔMICO DA TABELA PERIÓDICA";
         dica3 = "POSSUI UM ÚNICO PRÓTON";
+        super.setDicas(dica1, dica2, dica3);
         super.setArrayList(this);
     }
     

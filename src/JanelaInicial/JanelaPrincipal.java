@@ -16,11 +16,12 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     
     Hidrogenio hidrogenio;
     int posX, posY, largura, altura;
-    Botao elemento = new Botao(); //Botao aonde vai o simbolo do elemento
-    Botao nomeElemento = new Botao(); //Botao aonde vai o nome do elemento
-    JLabel periodos; //Labels para os periodos
-    JLabel familias; //Labels para as familias
+    Botao elemento = new Botao(); //Botao aonde vai o simbolo do elemento.
+    Botao nomeElemento = new Botao(); //Botao aonde vai o nome do elemento.
+    JLabel periodos; //Labels para os periodos.
+    JLabel familias; //Labels para as familias.
     ArrayList<Elementos> arrayElem = new ArrayList();
+    ArrayList<Elementos> escolhidos = new ArrayList(); //Array de elementos que foram escolhidos aleatoriamente.
     /**
      * Creates new form JanelaPrincipal
      */
@@ -28,24 +29,22 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        super.setBounds(0, 0, 1365, 740); //Maximiza a tela
+        super.setBounds(0, 0, 1365, 740); //Maximiza a tela.
         hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
-        posX = hidrogenio.getX();
-        posY = hidrogenio.getY();
+        posX = hidrogenio.getX(); //Posiçao de referencia X.
+        posY = hidrogenio.getY(); //Posiçao de referencia Y.
         largura = 2 + hidrogenio.getSize().width;
         altura = 2 + hidrogenio.getSize().height;
         canvas.add(hidrogenio);
-        elemento.setBounds(10, 65, 130, 130); //Formata o tamanho do botao e a posiçao
-        nomeElemento.setBounds(10, 20, 549, 45); //Idem ao de cima
+        elemento.setBounds(10, 65, 130, 130); //Formata o tamanho do botao e a posiçao.
+        nomeElemento.setBounds(10, 20, 549, 45); //Idem ao de cima.
         canvas2.setLocation(posX + (largura * 2), posY - 6);
-        canvas2.add(nomeElemento); //Adiciona ao canvas2 o botao onde vai o nome do elemento
-        canvas2.add(elemento); //Adiciona ao canvas2 o botao onde vai o simbolo do elemento
-        canvas.add(canvas2); //Adiciona ao canvas o painel onde vai as informaçoes dos elementos
+        canvas2.add(nomeElemento); //Adiciona ao canvas2 o botao onde vai o nome do elemento.
+        canvas2.add(elemento); //Adiciona ao canvas2 o botao onde vai o simbolo do elemento.
+        canvas.add(canvas2); //Adiciona ao canvas o painel onde vai as informaçoes dos elementos.
         
-        tabelaPeriodica(); //Organiza a tabela periodica
-        
-        
+        tabelaPeriodica(); //Cria a tabela periodica.
     }
 
     /**
@@ -201,7 +200,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
 
     private void tabelaPeriodica() {
         int num;
-        for (int i = 0; i < 7; i++) { //Cria os labels e coloca nos periodos (Vertical)
+        for (int i = 0; i < 7; i++) { //Cria os labels e coloca nos periodos (Vertical).
             num = i + 1;
             periodos = new JLabel();
             periodos.setText("" + num);
@@ -210,45 +209,60 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             periodos.setVisible(true);
         }
         
-        for (int i = 1; i < 19; i++) { //Cria os labels e coloca nas familias (Horizontal)
+        for (int i = 1; i < 19; i++) { //Cria os labels e coloca nas familias (Horizontal).
             familias = new JLabel();
             familias.setText("" + i);
             canvas.add(familias);
             familias.setBounds(posX - 35 + (largura * i), posY - 20, largura, 10);
         }
         
-        for (int i = 1; i < 7; i++) {
-            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+        for (int i = 1; i < 7; i++) { //Cria a familia do Alcalinos.
+            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             alcalinos.setAlcalinos(alcalinos, posX, posY, altura, i, canvas);
         }
         
-        for (int i = 1; i < 7; i++) {
-            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+        for (int i = 1; i < 7; i++) { //Cria a familia dos Alcalinos-Terrosos.
+            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             alcTerrosos.setAlcalinosTerrosos(alcTerrosos, posX, posY, largura, altura, i, canvas);
         }
         
-        for (int i = 2; i < 12; i++) {
+        for (int i = 2; i < 12; i++) { //Cria o bloco dos metais de transiçao.
             for (int j = 3; j < 7; j++) {
-                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
                 metais.setMetaisDeTransiçao(metais, posX, posY, largura, altura, i, j, canvas);
             }
         }
-        for (int i = 12; i < 17; i++) {
+        for (int i = 12; i < 17; i++) { //Cria o bloco dos elementos Representativos.
             for (int j = 1; j < 7; j++) {
-                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
                 representativos.setRepresentativos(representativos, posX, posY, largura, altura, i, j, canvas);
             }
         }
         
-        for (int i = 0; i < 7; i++) {
-            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+        for (int i = 0; i < 7; i++) { //Cria a familia dos Gases Nobres.
+            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             nobres.setGasesNobres(nobres, posX, posY, largura, altura, i, canvas);
         }
         
-        for (int i = 3; i < 17; i++) {
+        for (int i = 3; i < 17; i++) { //Cria o bloco dos Metais de Transiçao Interna.
             for (int j = 7; j < 9; j++) {
                 MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
                 interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
+            }
+        }
+        
+        int index = 0;
+        Elementos elem;
+        while (escolhidos.size() != 10) { //Escolhe aleatoriamente 10 elementos para começar o jogo.
+            index = (int) (Math.random() * 40);
+            elem = arrayElem.get(index);
+            
+            if (escolhidos.isEmpty()) { //Adiciona o 1º elemento.
+                escolhidos.add(elem);
+            }else{
+                if (!escolhidos.contains(elem)) { //Testa se o elemento escolhido ja esta dentro da lista.
+                    escolhidos.add(elem);
+                }
             }
         }
     }

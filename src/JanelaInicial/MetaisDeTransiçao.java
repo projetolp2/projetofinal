@@ -68,6 +68,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É UTILIZADO COMO PINO PARA FRATURAS";
                         m.dica2 = "É UM METAL DE TRANSIÇÃO DO 4º PERÍODO";
                         m.dica3 = "SUA CONFIGURAÇÃO ELETRÔNICA TERMINA EM d²";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -132,6 +133,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É UM METAL DE TRANSIÇÃO";
                         m.dica2 = "UTILIZADO NO PROCESSO DE GALVANOPLASTIA";
                         m.dica3 = "PERTENCE À FAMÍLIA 6";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -148,6 +150,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É UM METAL DO 6 PERIODO E COM O MAIOR PONTO DE FUSAO DE TODOS. (+5000 ºC)";
                         m.dica2 = "É O ELEMENTO MAIS DENSO DE TODA A TABELA PERIODICA";
                         m.dica3 = "ESTA LOCALIZADO NA FAMÍLIA 6, ESSE METAL É MUITO UTILIZADO EM SUPERLIGAS ALTAMENTE RESISTENTES";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 6:
@@ -170,6 +173,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "POSSUI QUATRO CAMADAS ENERGÉTICAS";
                         m.dica2 = "ELE É UTILIZADO EM COFRES";
                         m.dica3 = "SUA CONFIGURAÇÃO ELETRÔNICA TERMINA EM d5";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -204,6 +208,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É UM METAL DE TRANSIÇÃO";
                         m.dica2 = "MUITO UTILIZADO EM PORTÕES";
                         m.dica3 = "POSSUI NÚMERO ATÔMICO IGUAL A 26";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -250,6 +255,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "UTILIZADO EM AGULHAS DE INJEÇÃO";
                         m.dica2 = "É UM METAL DE TRANSIÇÃO";
                         m.dica3 = "É O METAL MAIS RESISTENTE A CORROSAO CONHECIDO";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 6:
@@ -278,6 +284,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É UTILIZADO NA BLINDAGEM DE RADIAÇÃO";
                         m.dica2 = "ESTÁ LOCALIZADO NO SEXTO PERÍODO";
                         m.dica3 = "PERTENCE Â FAMÍLIA DO CARBONO E SEU SÍMBOLO REPRESENTA A SIGLA DO ESTADO DA PARAÍBA";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 5:
@@ -288,6 +295,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "ENCONTRA-SE NO SEXTO PERÍODO";
                         m.dica2 = "SEU RAIO ATÔMICO É MAIOR QUE O DO OURO";
                         m.dica3 = "MUITO UTILIZADO NO PROCESSO DE RECUPERAÇÃO DE FRATURA ÓSSEA";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 6:
@@ -310,6 +318,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É MUITO UTILIZADO EM FIAÇÕES ELÉTRICAS";
                         m.dica2 = "É UM METAL DO QUARTO PERÍODO";
                         m.dica3 = "ESTÁ LOCALIZADO NA FAMÍLIA ONZE";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -320,6 +329,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É USADO EM BIJUTERIAS, TALHERES, ETC";
                         m.dica2 = "É UM METAL DE TRANSIÇÃO";
                         m.dica3 = "ELEMENTO USADO NA FABRICAÇAO DE ESPELHOS";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 5:
@@ -330,6 +340,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "É METAL REPRESENTATIVO";
                         m.dica2 = "MUITO UTILIZADO EM JOIAS";
                         m.dica3 = "ESTÁ LOCALIZADO NO SEXTO PERÍODO DA FAMÍLIA 11";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 6:
@@ -352,6 +363,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "SEU RAIO ATÔMICO É MAIOR QUE O DO GÁS NOBRE CRIPTÔNIO";
                         m.dica2 = "É UM METAL DE TRANSIÇÃO UTILIZADO NA FABRICAÇÃO DE CALHAS";
                         m.dica3 = "POSSUI QUATRO CAMADAS ENERGÉTICAS E ENCONTRA-SE NA FAMÍLIA DOZE";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 4:
@@ -368,6 +380,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.dica1 = "MUITO UTILIZADO EM COLUNAS DE TERMÔMETRO";
                         m.dica2 = "TEM O MESMO NOME DE UM PLANETA DO SISTEMA SOLAR";
                         m.dica3 = "METAL ENCONTRADO NO ESTADO LÍQUIDO NA TEMPERATURA AMBIENTE";
+                        super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
                     case 6:

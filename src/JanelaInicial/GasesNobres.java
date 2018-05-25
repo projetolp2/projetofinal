@@ -40,6 +40,7 @@ public class GasesNobres extends Elementos{
                 n.dica1 = "UTILIZADO EM ILUMINAÇÃO DE PLACAS DE PROPAGANDAS";
                 n.dica2 = "ELEMENTO NA FAMÍLIA DOS ELEMENTOS NOBRES";
                 n.dica3 = "ELEMENTO DO 2o PERÍODO";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;
             case 2:
@@ -50,6 +51,7 @@ public class GasesNobres extends Elementos{
                 n.dica1 = "É UTILIZADO EM LÂMPADAS INCANDESCENTES";
                 n.dica2 = "ENCONTRA-SE NO TERCEIRO PERÍODO";
                 n.dica3 = "NÃO INTERAGE COM NENHUM ELEMENTO DA TABELA PERIÓDICA";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;
             case 3:
@@ -66,6 +68,7 @@ public class GasesNobres extends Elementos{
                 n.dica1 = "UTILIZADO EM LÂMPADAS PARA BRONZEAMENTO ARTIFICIAL";
                 n.dica2 = "ESTÁ NO 5o PERÍODO";
                 n.dica3 = "ELEMENTO QUE COMPÕE OS GASES NOBRES";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;
             case 5:
@@ -76,6 +79,7 @@ public class GasesNobres extends Elementos{
                 n.dica1 = "POSSUI O MENOR RAIO ATÔMICO DO PERÍODO SEIS";
                 n.dica2 = "UTILIZADO EM SISMÓGRAFOS";
                 n.dica3 = "POSSUI A CAMADA DE VALÊNCIA COMPLETA";
+                super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;
             case 6:
