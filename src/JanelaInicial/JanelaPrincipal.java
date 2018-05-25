@@ -29,7 +29,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         initComponents();
         
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela
-        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, arrayElem);
+        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
         posX = hidrogenio.getX();
         posY = hidrogenio.getY();
@@ -60,6 +60,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         canvas = new javax.swing.JPanel();
         canvas2 = new javax.swing.JPanel();
         numeroAtomico = new javax.swing.JLabel();
+        massaAtomica = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -72,13 +73,22 @@ public class JanelaPrincipal extends javax.swing.JDialog {
 
         canvas2.setBorder(javax.swing.BorderFactory.createTitledBorder("Elemento"));
 
+        numeroAtomico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        massaAtomica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        massaAtomica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout canvas2Layout = new javax.swing.GroupLayout(canvas2);
         canvas2.setLayout(canvas2Layout);
         canvas2Layout.setHorizontalGroup(
             canvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvas2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(numeroAtomico, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(canvas2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(massaAtomica, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(canvas2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(numeroAtomico, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(447, Short.MAX_VALUE))
         );
         canvas2Layout.setVerticalGroup(
@@ -86,7 +96,9 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             .addGroup(canvas2Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(numeroAtomico, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(massaAtomica, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout canvasLayout = new javax.swing.GroupLayout(canvas);
@@ -96,14 +108,14 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             .addGroup(canvasLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
         canvasLayout.setVerticalGroup(
             canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvasLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addContainerGap(473, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Ajuda");
@@ -183,6 +195,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JLabel massaAtomica;
     private javax.swing.JLabel numeroAtomico;
     // End of variables declaration//GEN-END:variables
 
@@ -205,36 +218,36 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         }
         
         for (int i = 1; i < 7; i++) {
-            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             alcalinos.setAlcalinos(alcalinos, posX, posY, altura, i, canvas);
         }
         
         for (int i = 1; i < 7; i++) {
-            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             alcTerrosos.setAlcalinosTerrosos(alcTerrosos, posX, posY, largura, altura, i, canvas);
         }
         
         for (int i = 2; i < 12; i++) {
             for (int j = 3; j < 7; j++) {
-                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
                 metais.setMetaisDeTransiçao(metais, posX, posY, largura, altura, i, j, canvas);
             }
         }
         for (int i = 12; i < 17; i++) {
             for (int j = 1; j < 7; j++) {
-                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
                 representativos.setRepresentativos(representativos, posX, posY, largura, altura, i, j, canvas);
             }
         }
         
         for (int i = 0; i < 7; i++) {
-            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             nobres.setGasesNobres(nobres, posX, posY, largura, altura, i, canvas);
         }
         
         for (int i = 3; i < 17; i++) {
             for (int j = 7; j < 9; j++) {
-                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, arrayElem);
+                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
                 interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
             }
         }

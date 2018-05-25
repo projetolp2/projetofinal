@@ -17,8 +17,8 @@ import javax.swing.*;
 public class Elementos extends JButton{
     private String nome; //Variavel que recebe o nome de cada elemento.
     ImageIcon imagem;
-    String numeroAtomico;
-    JLabel label;
+    String numeroAtomico, massaAtomica;
+    JLabel label1, label2;
     ArrayList<Elementos> arrayElem;
     
     public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem){ //Paineis que vem da Janela Principal
@@ -37,7 +37,8 @@ public class Elementos extends JButton{
             n.setBackground(getBackground()); //Pega a cor do botao e joga no outro.
             e.setText(getText()); //Pegua o texto do botao e insere nesse botao (Apenas o simbolo)
             n.setText(nome); //Aqui, o botao recebe o nome real do elemento pelo metodo criado la em baixo.
-            label.setText(numeroAtomico); //Coloca o numero atomico do elemento.
+            label1.setText(numeroAtomico); //Coloca o numero atomico do elemento.
+            label2.setText(massaAtomica); //Coloca o numero atomico do elemento.
         }
 
         @Override
@@ -50,7 +51,8 @@ public class Elementos extends JButton{
             n.setBackground(null); //Idem ao de cima
             e.setText(""); //Coloca uma string vazia ao botao.
             n.setText(""); //Idem ao de cima.
-            label.setText(""); //Retira o numero atomico do elemento.
+            label1.setText(""); //Retira o numero atomico do elemento.
+            label2.setText(""); //Retira o numero atomico do elemento.
         }
         });
         super.setSize(55, 65);
@@ -70,7 +72,11 @@ public class Elementos extends JButton{
     }
     
     public void setNumeroAtomico(JLabel l){
-        label = l;
+        label1 = l;
+    }
+    
+    public void setMassaAtomica(JLabel l){
+        label2 = l;
     }
     
     public void setArrayList(Elementos e){
