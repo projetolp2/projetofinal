@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -14,8 +15,8 @@ import javax.swing.*;
  */
 public class Alcalinos extends Elementos{
     String dica1, dica2, dica3;
-    public Alcalinos(JButton e, JButton n, JLabel nAtomico){ //Paineis canvas e canvas2
-        super(e, n); //Envia os paineis para a classe Elementos
+    public Alcalinos(JButton e, JButton n, JLabel nAtomico, ArrayList<Elementos> arrayElem){ //Paineis canvas e canvas2
+        super(e, n, arrayElem); //Envia os paineis para a classe Elementos
         setBackground(new Color(255, 140, 0, 150));
         super.setNumeroAtomico(nAtomico);
     }
@@ -36,6 +37,7 @@ public class Alcalinos extends Elementos{
                 a.dica1 = "UM DOS COMPONETES DO SAL DE COZINHA";
                 a.dica2 = "É UM METAL ALCALINO QUE EXPLODE EM CONTATO COM A ÁGUA";
                 a.dica3 = "POSSUI TRÊS CAMADAS ENERGÉTICAS";
+                arrayElem.add(a);
                 break;
             case 3:
                 super.setNome("Potassio");
@@ -44,6 +46,7 @@ public class Alcalinos extends Elementos{
                 a.dica1 = "É UM METAL DO QUARTO PERÍODO";
                 a.dica2 = "É UTILIZADO EM ADUBOS QUÍMICOS";
                 a.dica3 = "ESTÁ NO GRUPO DOS METAIS ALCALINOS";
+                super.setArrayList(a);
                 break;
             case 4:
                 super.setNome("Rubidio");

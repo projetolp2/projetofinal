@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -14,8 +15,8 @@ import javax.swing.*;
  */
 public class Hidrogenio extends Elementos{
     String dica1, dica2, dica3;
-    public Hidrogenio(JButton e, JButton n, JLabel nAtomico){ //Paineis canvas e canvas2
-        super(e, n); //Envia os paineis para a classe Elementos
+    public Hidrogenio(JButton e, JButton n, JLabel nAtomico, ArrayList<Elementos> arrayElem){ //Paineis canvas e canvas2
+        super(e, n, arrayElem); //Envia os paineis para a classe Elementos
         super.setNome("Hidrogenio"); //Manda o nome para a classe Elementos.
         super.setNumeroAtomico(nAtomico); //Transfere o JLabel que esta na JanelaPrincipal para a classe elementos
         super.numeroAtomico = "1"; //Coloca na variavel numeroAtomico que esta em Elementos o valor 1.
@@ -25,6 +26,7 @@ public class Hidrogenio extends Elementos{
         dica1 = "UTILIZADO COMO COMBUSTÍVEL PARA FOGUETES;";
         dica2 = "POSSUI O MENOR RAIO ATÔMICO DA TABELA PERIÓDICA";
         dica3 = "POSSUI UM ÚNICO PRÓTON";
+        super.setArrayList(this);
     }
     
 }

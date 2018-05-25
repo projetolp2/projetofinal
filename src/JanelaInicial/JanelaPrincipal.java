@@ -5,6 +5,7 @@
  */
 package JanelaInicial;
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 /**
@@ -19,6 +20,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     Botao nomeElemento = new Botao(); //Botao aonde vai o nome do elemento
     JLabel periodos; //Labels para os periodos
     JLabel familias; //Labels para as familias
+    ArrayList<Elementos> arrayElem = new ArrayList();
     /**
      * Creates new form JanelaPrincipal
      */
@@ -27,7 +29,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         initComponents();
         
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela
-        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico);
+        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, arrayElem);
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
         posX = hidrogenio.getX();
         posY = hidrogenio.getY();
@@ -42,6 +44,8 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         canvas.add(canvas2); //Adiciona ao canvas o painel onde vai as informaçoes dos elementos
         
         tabelaPeriodica(); //Organiza a tabela periodica
+        
+        
     }
 
     /**
@@ -193,9 +197,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             periodos.setVisible(true);
         }
         
-        int num2;
         for (int i = 1; i < 19; i++) { //Cria os labels e coloca nas familias (Horizontal)
-            num2 = i + 1;
             familias = new JLabel();
             familias.setText("" + i);
             canvas.add(familias);
@@ -203,41 +205,36 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         }
         
         for (int i = 1; i < 7; i++) {
-            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             alcalinos.setAlcalinos(alcalinos, posX, posY, altura, i, canvas);
         }
         
         for (int i = 1; i < 7; i++) {
-            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             alcTerrosos.setAlcalinosTerrosos(alcTerrosos, posX, posY, largura, altura, i, canvas);
         }
         
         for (int i = 2; i < 12; i++) {
             for (int j = 3; j < 7; j++) {
-                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
                 metais.setMetaisDeTransiçao(metais, posX, posY, largura, altura, i, j, canvas);
             }
         }
         for (int i = 12; i < 17; i++) {
             for (int j = 1; j < 7; j++) {
-                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
                 representativos.setRepresentativos(representativos, posX, posY, largura, altura, i, j, canvas);
             }
         }
         
         for (int i = 0; i < 7; i++) {
-            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
+            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo
             nobres.setGasesNobres(nobres, posX, posY, largura, altura, i, canvas);
         }
         
-        /*MetaisTransiçaoInterna interna1 = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
-        MetaisTransiçaoInterna interna2 = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
-        interna1.setMetaisTransiçaoInterna(interna1, posX, posY, largura, altura, 2, 7, canvas);
-        interna2.setMetaisTransiçaoInterna(interna2, posX, posY, largura, altura, 2, 8, canvas);*/
-        
-        for (int i = 2; i < 15; i++) {
+        for (int i = 3; i < 17; i++) {
             for (int j = 7; j < 9; j++) {
-                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico);
+                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, arrayElem);
                 interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
             }
         }

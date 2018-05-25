@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,41 +17,28 @@ import javax.swing.JPanel;
  */
 public class MetaisTransiçaoInterna extends Elementos{
     
-    public MetaisTransiçaoInterna(JButton e, JButton n, JLabel nAtomico) {
-        super(e, n);
+    public MetaisTransiçaoInterna(JButton e, JButton n, JLabel nAtomico, ArrayList<Elementos> arrayElem) {
+        super(e, n, arrayElem);
         setBackground(new Color(17, 204, 228, 150));
-        //super.setNumeroAtomico(nAtomico);
+        super.setNumeroAtomico(nAtomico);
     }
     
     public void setMetaisTransiçaoInterna(MetaisTransiçaoInterna m, int x, int y, int w, int h, int i, int j, JPanel c){
         m.setLocation(x + (w * i), y + (h * j) + 6);
         c.add(m);
         switch (i) {
-            case 2:
+            case 3:
                 switch (j) {
                     case 7:
                         super.setNome("Cerio");
+                        super.numeroAtomico = "58";
                         m.setText("Ce");
                         break;
                     case 8:
                         m.setBackground(new Color(0, 85, 255, 150));
                         super.setNome("Torio");
+                        super.numeroAtomico = "90";
                         m.setText("Th");
-                        break;
-                    default:
-                        return;
-                }
-            return;
-            case 3:
-                switch (j) {
-                    case 7:
-                        super.setNome("Praseodimio");
-                        m.setText("Pr");
-                        break;
-                    case 8:
-                        m.setBackground(new Color(0, 85, 255, 150));
-                        super.setNome("Protactinio");
-                        m.setText("Pa");
                         break;
                     default:
                         return;
@@ -59,13 +47,15 @@ public class MetaisTransiçaoInterna extends Elementos{
             case 4:
                 switch (j) {
                     case 7:
-                        super.setNome("Neodimio");
-                        m.setText("Nd");
+                        super.setNome("Praseodimio");
+                        super.numeroAtomico = "59";
+                        m.setText("Pr");
                         break;
                     case 8:
                         m.setBackground(new Color(0, 85, 255, 150));
-                        super.setNome("Uranio");
-                        m.setText("U");
+                        super.setNome("Protactinio");
+                        super.numeroAtomico = "91";
+                        m.setText("Pa");
                         break;
                     default:
                         return;
@@ -74,20 +64,207 @@ public class MetaisTransiçaoInterna extends Elementos{
             case 5:
                 switch (j) {
                     case 7:
+                        super.setNome("Neodimio");
+                        super.numeroAtomico = "60";
+                        m.setText("Nd");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Uranio");
+                        super.numeroAtomico = "92";
+                        m.setText("U");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 6:
+                switch (j) {
+                    case 7:
                         super.setNome("Promecio");
+                        super.numeroAtomico = "61";
                         m.setText("Pm");
                         break;
                     case 8:
                         m.setBackground(new Color(0, 85, 255, 150));
                         super.setNome("Netunio");
+                        super.numeroAtomico = "93";
                         m.setText("Np");
                         break;
                     default:
                         return;
                 }
             return;
+            case 7:
+                switch (j) {
+                    case 7:
+                        super.setNome("Samario");
+                        super.numeroAtomico = "62";
+                        m.setText("Sm");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Plutonio");
+                        super.numeroAtomico = "94";
+                        m.setText("Pu");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 8:
+                switch (j) {
+                    case 7:
+                        super.setNome("Europio");
+                        super.numeroAtomico = "63";
+                        m.setText("Eu");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Americio");
+                        super.numeroAtomico = "95";
+                        m.setText("Am");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 9:
+                switch (j) {
+                    case 7:
+                        super.setNome("Gadolinio");
+                        super.numeroAtomico = "64";
+                        m.setText("Gd");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Curio");
+                        super.numeroAtomico = "96";
+                        m.setText("Cm");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 10:
+                switch (j) {
+                    case 7:
+                        super.setNome("Terbio");
+                        super.numeroAtomico = "65";
+                        m.setText("Tb");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Berquelio");
+                        super.numeroAtomico = "97";
+                        m.setText("Bk");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 11:
+                switch (j) {
+                    case 7:
+                        super.setNome("Disprosio");
+                        super.numeroAtomico = "66";
+                        m.setText("Dy");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Californio");
+                        super.numeroAtomico = "98";
+                        m.setText("Cf");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 12:
+                switch (j) {
+                    case 7:
+                        super.setNome("Holmio");
+                        super.numeroAtomico = "67";
+                        m.setText("Ho");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Einstenio");
+                        super.numeroAtomico = "99";
+                        m.setText("Es");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 13:
+                switch (j) {
+                    case 7:
+                        super.setNome("Erbio");
+                        super.numeroAtomico = "68";
+                        m.setText("Er");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Fermio");
+                        super.numeroAtomico = "100";
+                        m.setText("Fm");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 14:
+                switch (j) {
+                    case 7:
+                        super.setNome("Tulio");
+                        super.numeroAtomico = "69";
+                        m.setText("Tm");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Mendelevio");
+                        super.numeroAtomico = "101";
+                        m.setText("Md");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 15:
+                switch (j) {
+                    case 7:
+                        super.setNome("Iterbio");
+                        super.numeroAtomico = "70";
+                        m.setText("Yb");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Nobelio");
+                        super.numeroAtomico = "102";
+                        m.setText("No");
+                        break;
+                    default:
+                        return;
+                }
+            return;
+            case 16:
+                switch (j) {
+                    case 7:
+                        super.setNome("Lutecio");
+                        super.numeroAtomico = "71";
+                        m.setText("Lu");
+                        break;
+                    case 8:
+                        m.setBackground(new Color(0, 85, 255, 150));
+                        super.setNome("Laurencio");
+                        super.numeroAtomico = "103";
+                        m.setText("Lr");
+                        break;
+                    default:
+                        return;
+                }
+            return;
         }
-        //super.setNome("Elemento");
-        //m.setText("El");
     }
 }

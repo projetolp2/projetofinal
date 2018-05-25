@@ -8,6 +8,7 @@ package JanelaInicial;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.*;
 /**
  *
@@ -18,8 +19,11 @@ public class Elementos extends JButton{
     ImageIcon imagem;
     String numeroAtomico;
     JLabel label;
-    public Elementos(JButton e, JButton n){ //Paineis que vem da Janela Principal
+    ArrayList<Elementos> arrayElem;
+    
+    public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem){ //Paineis que vem da Janela Principal
         super();
+        this.arrayElem = arrayElem;
         //super.removeMouseListener(super.getMouseListeners()[0]);
         super.addMouseListener(new MouseAdapter() {
         @Override
@@ -33,7 +37,7 @@ public class Elementos extends JButton{
             n.setBackground(getBackground()); //Pega a cor do botao e joga no outro.
             e.setText(getText()); //Pegua o texto do botao e insere nesse botao (Apenas o simbolo)
             n.setText(nome); //Aqui, o botao recebe o nome real do elemento pelo metodo criado la em baixo.
-            //label.setText(numeroAtomico); //Coloca o numero atomico do elemento.
+            label.setText(numeroAtomico); //Coloca o numero atomico do elemento.
         }
 
         @Override
@@ -46,11 +50,11 @@ public class Elementos extends JButton{
             n.setBackground(null); //Idem ao de cima
             e.setText(""); //Coloca uma string vazia ao botao.
             n.setText(""); //Idem ao de cima.
-            //label.setText(""); //Retira o numero atomico do elemento.
+            label.setText(""); //Retira o numero atomico do elemento.
         }
         });
         super.setSize(55, 65);
-        super.setLocation(15, 25);
+        super.setLocation(10, 25);
         super.setFont(super.getFont().deriveFont(Font.PLAIN, 18));
         super.setFocusPainted(false);
         super.setVisible(true);
@@ -61,12 +65,15 @@ public class Elementos extends JButton{
         this.nome = nome;
     }
 
-    void setImagem(ImageIcon imageIcon) {
+    public void setImagem(ImageIcon imageIcon) {
         imagem = imageIcon;
     }
     
-    void setNumeroAtomico(JLabel l){
+    public void setNumeroAtomico(JLabel l){
         label = l;
     }
     
+    public void setArrayList(Elementos e){
+        arrayElem.add(e);
+    }
 }
