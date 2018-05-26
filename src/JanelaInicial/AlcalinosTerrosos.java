@@ -71,7 +71,7 @@ public class AlcalinosTerrosos extends Elementos{
                 at.setText("Ba");
                 at.dica1 = "SEU RAIO ATÔMICO É MAIOR QUE O DO OURO";
                 at.dica2 = "POSSUI SEIS CAMADAS ENERGÉTICAS";
-                at.dica3 = "É UM METAL ALCALINO –TERROSSO USADO EM FOGOS DE ARTIFÍCIO E CHAPAS DE ESTÔMAGO";
+                at.dica3 = "É UM METAL ALCALINO–TERROSSO USADO EM FOGOS DE ARTIFÍCIO E CHAPAS DE ESTÔMAGO";
                 super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(at);
                 break;

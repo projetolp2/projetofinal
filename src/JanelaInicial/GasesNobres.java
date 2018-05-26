@@ -39,7 +39,7 @@ public class GasesNobres extends Elementos{
                 n.setText("Ne");
                 n.dica1 = "UTILIZADO EM ILUMINAÇÃO DE PLACAS DE PROPAGANDAS";
                 n.dica2 = "ELEMENTO NA FAMÍLIA DOS ELEMENTOS NOBRES";
-                n.dica3 = "ELEMENTO DO 2o PERÍODO";
+                n.dica3 = "ELEMENTO DO 2º PERÍODO";
                 super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;
@@ -66,8 +66,8 @@ public class GasesNobres extends Elementos{
                 super.massaAtomica = "131,29";
                 n.setText("Xe");
                 n.dica1 = "UTILIZADO EM LÂMPADAS PARA BRONZEAMENTO ARTIFICIAL";
-                n.dica2 = "ESTÁ NO 5o PERÍODO";
-                n.dica3 = "ELEMENTO QUE COMPÕE OS GASES NOBRES";
+                n.dica2 = "ESTÁ NO 5º PERÍODO";
+                n.dica3 = "ELEMENTO QUE FAZ PARTE DOS GASES NOBRES";
                 super.setDicas(dica1, dica2, dica3);
                 super.setArrayList(n);
                 break;

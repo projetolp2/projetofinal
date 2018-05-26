@@ -142,7 +142,7 @@ public class Representativos extends Elementos{
                         super.numeroAtomico = "7";
                         super.massaAtomica = "14,007";
                         r.setText("N");
-                        r.dica1 = "É UM GÁS MAS PODE SER ENCONTRADO NO ESTADO LÍQUIDO UTILIZADO PARA CONSERVAÇÃO DE MATERIAIS EM TEMPERATURAS MUITO BAIXAS";
+                        r.dica1 = "É UM GÁS MAS PODE SER ENCONTRADO NO ESTADO LÍQUIDO SENDO UTILIZADO NA CONSERVAÇÃO DE MATERIAIS EM TEMPERATURAS MUITO BAIXAS";
                         r.dica2 = "POSSUI DUAS CAMADAS ENERGÉTICAS";
                         r.dica3 = "ENCONTRA-SE NO GRUPO VIZINHO À FAMÍLIA DO CARBONO";
                         super.setDicas(dica1, dica2, dica3);
@@ -228,7 +228,7 @@ public class Representativos extends Elementos{
                         super.massaAtomica = "78,971";
                         r.setText("Se");
                         r.dica1 = "ELEMENTO UTILIZADO EM XAMPU ANTI-CASPA";
-                        r.dica2 = "AMETAL DO 4o PERÍODO";
+                        r.dica2 = "AMETAL DO 4º PERÍODO";
                         r.dica3 = "ESTÁ NA FAMÍLIA DOS CALCOGÊNIOS";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
@@ -275,7 +275,7 @@ public class Representativos extends Elementos{
             case 16:
                 switch (j) {
                     case 1:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Fluor");
                         super.numeroAtomico = "9";
                         super.massaAtomica = "18,998";
@@ -287,7 +287,7 @@ public class Representativos extends Elementos{
                         super.setArrayList(r);
                         break;
                     case 2:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Cloro");
                         super.numeroAtomico = "17";
                         super.massaAtomica = "35,45";
@@ -299,14 +299,14 @@ public class Representativos extends Elementos{
                         super.setArrayList(r);
                         break;
                     case 3:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Bromo");
                         super.numeroAtomico = "35";
                         super.massaAtomica = "79,904";
                         r.setText("Br");
                         break;
                     case 4:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Iodo");
                         super.numeroAtomico = "53";
                         super.massaAtomica = "126,90";
@@ -318,14 +318,14 @@ public class Representativos extends Elementos{
                         super.setArrayList(r);
                         break;
                     case 5:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Astato");
                         super.numeroAtomico = "85";
                         super.massaAtomica = "(210)";
                         r.setText("At");
                         break;
                     case 6:
-                        halogenio(r);
+                        setCorHalogenio(r);
                         super.setNome("Tenessino");
                         super.numeroAtomico = "117";
                         super.massaAtomica = "(294)";
@@ -347,7 +347,7 @@ public class Representativos extends Elementos{
         rep.setBackground(new Color(188, 143, 143, 150));
     }
     
-    private void halogenio(Representativos rep){
+    private void setCorHalogenio(Representativos rep){
         rep.setBackground(new Color(255, 0, 0, 150));
     }
 }

@@ -132,7 +132,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.setText("Cr");
                         m.dica1 = "É UM METAL DE TRANSIÇÃO";
                         m.dica2 = "UTILIZADO NO PROCESSO DE GALVANOPLASTIA";
-                        m.dica3 = "PERTENCE À FAMÍLIA 6";
+                        m.dica3 = "PERTENCE À FAMÍLIA 6 E POSSUI O MENOR RAIO ATOMICO DENTRE ESTES";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
@@ -172,7 +172,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.setText("Mn");
                         m.dica1 = "POSSUI QUATRO CAMADAS ENERGÉTICAS";
                         m.dica2 = "ELE É UTILIZADO EM COFRES";
-                        m.dica3 = "SUA CONFIGURAÇÃO ELETRÔNICA TERMINA EM d5";
+                        m.dica3 = "SUA CONFIGURAÇÃO ELETRÔNICA TERMINA EM d⁵";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
@@ -254,7 +254,7 @@ public class MetaisDeTransiçao extends Elementos{
                         m.setText("Ir");
                         m.dica1 = "UTILIZADO EM AGULHAS DE INJEÇÃO";
                         m.dica2 = "É UM METAL DE TRANSIÇÃO";
-                        m.dica3 = "É O METAL MAIS RESISTENTE A CORROSAO CONHECIDO";
+                        m.dica3 = "SUA CONFIGURAÇÃO ELETRÔNICA TERMINA EM 5d⁷";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
@@ -281,9 +281,9 @@ public class MetaisDeTransiçao extends Elementos{
                         super.numeroAtomico = "46";
                         super.massaAtomica = "106,42";
                         m.setText("Pd");
-                        m.dica1 = "É UTILIZADO NA BLINDAGEM DE RADIAÇÃO";
-                        m.dica2 = "ESTÁ LOCALIZADO NO SEXTO PERÍODO";
-                        m.dica3 = "PERTENCE Â FAMÍLIA DO CARBONO E SEU SÍMBOLO REPRESENTA A SIGLA DO ESTADO DA PARAÍBA";
+                        m.dica1 = "É UTILIZADO EM PRÓTESES DENTÁRIAS";
+                        m.dica2 = "ESTÁ LOCALIZADO NO QUINTO PERÍODO";
+                        m.dica3 = "POSSUI RAIO ATOMICO MAIOR DO QUE O DA PRATA";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
@@ -293,8 +293,8 @@ public class MetaisDeTransiçao extends Elementos{
                         super.massaAtomica = "195,08";
                         m.setText("Pt");
                         m.dica1 = "ENCONTRA-SE NO SEXTO PERÍODO";
-                        m.dica2 = "SEU RAIO ATÔMICO É MAIOR QUE O DO OURO";
-                        m.dica3 = "MUITO UTILIZADO NO PROCESSO DE RECUPERAÇÃO DE FRATURA ÓSSEA";
+                        m.dica2 = "MUITO UTILIZADO NO PROCESSO DE RECUPERAÇÃO DE FRATURA ÓSSEA";
+                        m.dica3 = "SEU RAIO ATÔMICO É MAIOR QUE O DO OURO";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(m);
                         break;
@@ -337,7 +337,7 @@ public class MetaisDeTransiçao extends Elementos{
                         super.numeroAtomico = "79";
                         super.massaAtomica = "196,97";
                         m.setText("Au");
-                        m.dica1 = "É METAL REPRESENTATIVO";
+                        m.dica1 = "É UM METAL DE TRANSIÇAO";
                         m.dica2 = "MUITO UTILIZADO EM JOIAS";
                         m.dica3 = "ESTÁ LOCALIZADO NO SEXTO PERÍODO DA FAMÍLIA 11";
                         super.setDicas(dica1, dica2, dica3);

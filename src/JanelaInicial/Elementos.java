@@ -21,8 +21,9 @@ public class Elementos extends JButton{
     String[] dicas = new String[3];
     JLabel label1, label2;
     ArrayList<Elementos> arrayElem;
+    Botao legenda = new Botao();
     
-    public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem){ //Paineis que vem da Janela Principal
+    public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem){ //Paineis que vem da Janela Principal.
         super();
         this.arrayElem = arrayElem;
         //super.removeMouseListener(super.getMouseListeners()[0]);
@@ -57,7 +58,7 @@ public class Elementos extends JButton{
         }
         });
         super.setSize(55, 65);
-        super.setLocation(10, 25);
+        super.setLocation(10, 30);
         super.setFont(super.getFont().deriveFont(Font.PLAIN, 18));
         super.setFocusPainted(false);
         super.setVisible(true);
