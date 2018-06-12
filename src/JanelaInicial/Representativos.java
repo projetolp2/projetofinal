@@ -216,7 +216,7 @@ public class Representativos extends Elementos{
                         super.massaAtomica = "32,06";
                         r.setText("S");
                         r.dica1 = "É ENCOTRADO EM CONSERVANTES DE FOGOS DE ARTIFÍCIO";
-                        r.dica2 = "É UM NÃO METAL DA FAMILIA DOS CALCOGÊNIOS";
+                        r.dica2 = "É UM NÃO METAL DA FAMILIA DO OXIGENIO";
                         r.dica3 = "SEU SÍMBOLO ENCONTRA-SE NA ROUPA DO SUPER-HOMEM";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
@@ -229,7 +229,7 @@ public class Representativos extends Elementos{
                         r.setText("Se");
                         r.dica1 = "ELEMENTO UTILIZADO EM XAMPU ANTI-CASPA";
                         r.dica2 = "AMETAL DO 4º PERÍODO";
-                        r.dica3 = "ESTÁ NA FAMÍLIA DOS CALCOGÊNIOS";
+                        r.dica3 = "ESTÁ NA FAMÍLIA DO OXIGENIO";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
@@ -241,7 +241,7 @@ public class Representativos extends Elementos{
                         r.setText("Te");
                         r.dica1 = "ENCONTRADO EM PROTEÇÃO PARA CHUMBO DE ACUMULADORES DE BATERIA";
                         r.dica2 = "É UM SEMIMETAL NÃO RADIATIVO";
-                        r.dica3 = "ESTÁ NA FAMÍLIA DOS CALCOGÊNIOS";
+                        r.dica3 = "ESTÁ NA FAMÍLIA DO OXIGENIO";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
                         break;
@@ -252,7 +252,7 @@ public class Representativos extends Elementos{
                         super.massaAtomica = "(209)";
                         r.setText("Po");
                         r.dica1 = "É UM SEMI-METAL RADIOATIVO QUE FOI DESCOBERTO POR MARIE CORRIE";
-                        r.dica2 = "PERTENCE À FAMÍLIA DOS CALCOGÊNIOS";
+                        r.dica2 = "PERTENCE À FAMÍLIA DO OXIGENIO";
                         r.dica3 = "SEU NÚMERO ATÔMICO ANTECEDE O DO ASTATO";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
@@ -263,7 +263,7 @@ public class Representativos extends Elementos{
                         super.massaAtomica = "(293)";
                         r.setText("Lv");
                         r.dica1 = "FOI UM DOS ÚLTIMOS ELEMENTOS A SEREM RECONHECIDOS PELA IUPAC";
-                        r.dica2 = "É UM CALCOGÊNIO";
+                        r.dica2 = "ESTA NA FAMÍLIA DO OXIGENIO";
                         r.dica3 = "POSSUI SETE CAMADAS ENERGÉTICAS";
                         super.setDicas(dica1, dica2, dica3);
                         super.setArrayList(r);
