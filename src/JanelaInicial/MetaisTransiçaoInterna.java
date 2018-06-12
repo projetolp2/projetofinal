@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,8 +18,8 @@ import javax.swing.JPanel;
  */
 public class MetaisTransiçaoInterna extends Elementos{
     
-    public MetaisTransiçaoInterna(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem) {
-        super(e, n, arrayElem);
+    public MetaisTransiçaoInterna(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem, Socket s) {
+        super(e, n, arrayElem, s);
         setBackground(new Color(17, 204, 228, 150));
         super.setNumeroAtomico(nAtomico);
         super.setMassaAtomica(mAtomica);

@@ -8,6 +8,7 @@ package JanelaInicial;
 import JanelasAjuda.JanelaDistriEletronica;
 import JanelasAjuda.JanelaPeriodo;
 import JanelasAjuda.JanelaRaioAtomico;
+import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class JanelaPrincipal extends javax.swing.JDialog {
     
+    Socket socket;
     Hidrogenio hidrogenio;
     int posX, posY, largura, altura;
     Botao elemento = new Botao(); //Botao aonde vai o simbolo do elemento.
@@ -29,12 +31,15 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     /**
      * Creates new form JanelaPrincipal
      */
-    public JanelaPrincipal(java.awt.Frame parent, boolean modal) {
+    public JanelaPrincipal(java.awt.Frame parent, boolean modal, Socket s) {
         super(parent, modal);
         initComponents();
         
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela.
-        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
+        socket = s;
+        System.out.println("janela principal " + socket);
+        
+        hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
         posX = hidrogenio.getX(); //Posiçao de referencia X.
         posY = hidrogenio.getY(); //Posiçao de referencia Y.
@@ -491,7 +496,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true);
+                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -559,40 +564,57 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         }
         
         for (int i = 1; i < 7; i++) { //Cria a familia do Alcalinos.
-            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
+            Alcalinos alcalinos = new Alcalinos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             alcalinos.setAlcalinos(alcalinos, posX, posY, altura, i, canvas);
         }
         
         for (int i = 1; i < 7; i++) { //Cria a familia dos Alcalinos-Terrosos.
-            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
+            AlcalinosTerrosos alcTerrosos = new AlcalinosTerrosos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             alcTerrosos.setAlcalinosTerrosos(alcTerrosos, posX, posY, largura, altura, i, canvas);
         }
         
         for (int i = 2; i < 12; i++) { //Cria o bloco dos metais de transiçao.
             for (int j = 3; j < 7; j++) {
-                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
+                MetaisDeTransiçao metais = new MetaisDeTransiçao(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
                 metais.setMetaisDeTransiçao(metais, posX, posY, largura, altura, i, j, canvas);
             }
         }
         for (int i = 12; i < 17; i++) { //Cria o bloco dos elementos Representativos.
             for (int j = 1; j < 7; j++) {
-                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
+                Representativos representativos = new Representativos(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
                 representativos.setRepresentativos(representativos, posX, posY, largura, altura, i, j, canvas);
             }
         }
         
         for (int i = 0; i < 7; i++) { //Cria a familia dos Gases Nobres.
-            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
+            GasesNobres nobres = new GasesNobres(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket); //Manda os paineis para que sejam adicionado as informaçoes de nome e simbolo.
             nobres.setGasesNobres(nobres, posX, posY, largura, altura, i, canvas);
         }
         
         for (int i = 3; i < 17; i++) { //Cria o bloco dos Metais de Transiçao Interna.
             for (int j = 7; j < 9; j++) {
-                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem);
+                MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
                 interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
             }
         }
         
+        /*int index = 0;
+        Elementos elem;
+        while (escolhidos.size() != 10) { //Escolhe aleatoriamente 10 elementos para começar o jogo.
+            index = (int) (Math.random() * 40);
+            elem = arrayElem.get(index);
+            
+            if (escolhidos.isEmpty()) { //Adiciona o 1º elemento.
+                escolhidos.add(elem);
+            }else{
+                if (!escolhidos.contains(elem)) { //Testa se o elemento escolhido ja esta dentro da lista.
+                    escolhidos.add(elem);
+                }
+            }
+        }*/
+    }
+    
+    public ArrayList getArray(){
         int index = 0;
         Elementos elem;
         while (escolhidos.size() != 10) { //Escolhe aleatoriamente 10 elementos para começar o jogo.
@@ -607,6 +629,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
                 }
             }
         }
+        return escolhidos;
     }
 }
 

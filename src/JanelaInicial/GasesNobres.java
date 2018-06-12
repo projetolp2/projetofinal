@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -15,8 +16,8 @@ import javax.swing.*;
  */
 public class GasesNobres extends Elementos{
     String dica1, dica2, dica3;
-    public GasesNobres(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem){ //Paineis canvas e canvas2
-        super(e, n, arrayElem); //Envia os paineis para a classe Elementos
+    public GasesNobres(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem, Socket s){ //Paineis canvas e canvas2
+        super(e, n, arrayElem, s); //Envia os paineis para a classe Elementos
         setBackground(new Color(106, 90, 205, 150));
         super.setNumeroAtomico(nAtomico);
         super.setMassaAtomica(mAtomica);

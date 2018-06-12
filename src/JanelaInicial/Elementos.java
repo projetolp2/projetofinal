@@ -8,7 +8,13 @@ package JanelaInicial;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 /**
  *
@@ -23,7 +29,7 @@ public class Elementos extends JButton{
     ArrayList<Elementos> arrayElem;
     Botao legenda = new Botao();
     
-    public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem){ //Paineis que vem da Janela Principal.
+    public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem, Socket s){ //Paineis que vem da Janela Principal.
         super();
         this.arrayElem = arrayElem;
         //super.removeMouseListener(super.getMouseListeners()[0]);
@@ -56,6 +62,41 @@ public class Elementos extends JButton{
             label1.setText(""); //Retira o numero atomico do elemento.
             label2.setText(""); //Retira o numero atomico do elemento.
         }
+        
+        @Override
+        public void mouseClicked(MouseEvent me){
+            
+            try {
+                if(true){
+                    System.out.println("1 - " + me.getComponent().getBackground());
+                    System.out.println("ELEMENTOS_SOCKET = " + s);
+                    //variaveis que se comunicam com o servidor;
+                    DataInputStream in = new DataInputStream(s.getInputStream());
+                    DataOutputStream out = new DataOutputStream(s.getOutputStream());
+                    out.writeUTF(nome);
+                        
+                    //test
+                    String test = in.readUTF();
+                    System.out.println("Resposta do Servidor: " + test);
+                    
+                    if(test.equalsIgnoreCase("acertou")){
+                        JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
+                    }else{
+                        //bloqueia o botão;
+                        me.getComponent().setEnabled(false);
+                        me.getComponent().setBackground(null);
+                    }
+
+                    //test
+                    System.out.println(nome);
+                }
+                    
+            } catch (IOException ex) {
+                Logger.getLogger(Elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
         });
         super.setSize(55, 65);
         super.setLocation(10, 30);

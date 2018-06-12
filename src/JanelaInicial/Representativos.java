@@ -6,6 +6,7 @@
 package JanelaInicial;
 
 import java.awt.Color;
+import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -15,8 +16,8 @@ import javax.swing.*;
  */
 public class Representativos extends Elementos{
     String dica1, dica2, dica3;
-    public Representativos(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem){
-        super(e, n, arrayElem);
+    public Representativos(JButton e, JButton n, JLabel nAtomico, JLabel mAtomica, ArrayList<Elementos> arrayElem, Socket s){
+        super(e, n, arrayElem, s);
         setBackground(new Color(70, 130, 180, 150));
         super.setNumeroAtomico(nAtomico);
         super.setMassaAtomica(mAtomica);
