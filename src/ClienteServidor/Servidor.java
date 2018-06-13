@@ -34,8 +34,8 @@ public class Servidor {
                     Socket jogador1 = cli.remove(0);
                     Socket jogador2 = cli.remove(0);
                     
-                    JanelaInicial.JanelaPrincipal obj = new JanelaInicial.JanelaPrincipal(null, true, jogador1);
-                    obj.setVisible(true);
+                    //JanelaInicial.JanelaPrincipal obj = new JanelaInicial.JanelaPrincipal(null, true, jogador1);
+                    //obj.setVisible(true);
                 }
                 //new GerenciadorDeClientes(cliente);
             }

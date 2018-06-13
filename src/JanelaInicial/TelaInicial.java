@@ -16,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,7 @@ import java.io.InputStreamReader;
  */
 public class TelaInicial extends javax.swing.JFrame {
     Socket test;
+    ArrayList<String> escolhidos = new ArrayList();
     /**
      * Creates new form Tela
      */
@@ -87,12 +89,19 @@ public class TelaInicial extends javax.swing.JFrame {
             
             //quando dois clientes se conectão o jogo começa;
             if(in.readUTF().equals("conectado")){
-            
+                while (escolhidos.size() != 10) {
+                    escolhidos.add(in.readUTF());
+                    if (escolhidos.size() == 10) {
+                        for (int i = 0; i < escolhidos.size(); i++) {
+                            System.out.println(escolhidos.get(i));
+                        }
+                    }
+                }
                 //fechando a janela do transição.
                 //tt.dispose();
 
                 //instancia um frame do tipo TelaPilha;
-                JanelaPrincipal frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s);
+                JanelaPrincipal frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s, escolhidos);
 
                 //torna o frame visível;
                 frame.setVisible(true);

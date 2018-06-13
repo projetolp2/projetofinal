@@ -27,16 +27,19 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     JLabel periodos; //Labels para os periodos.
     JLabel familias; //Labels para as familias.
     ArrayList<Elementos> arrayElem = new ArrayList();
-    ArrayList<Elementos> escolhidos = new ArrayList(); //Array de elementos que foram escolhidos aleatoriamente.
+    //ArrayList<Elementos> escolhidos = new ArrayList();
+    ArrayList<Elementos> escolhidos;
+    
     /**
      * Creates new form JanelaPrincipal
      */
-    public JanelaPrincipal(java.awt.Frame parent, boolean modal, Socket s) {
+    public JanelaPrincipal(java.awt.Frame parent, boolean modal, Socket s, ArrayList esc) {
         super(parent, modal);
         initComponents();
         
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela.
         socket = s;
+        escolhidos = esc;
         System.out.println("janela principal " + socket);
         
         hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
@@ -496,7 +499,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true, null);
+                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true, null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -596,6 +599,11 @@ public class JanelaPrincipal extends javax.swing.JDialog {
                 MetaisTransiçaoInterna interna = new MetaisTransiçaoInterna(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
                 interna.setMetaisTransiçaoInterna(interna, posX, posY, largura, altura, i, j, canvas);
             }
+        }
+        
+        for (int i = 0; i < escolhidos.size(); i++) {
+            System.out.println(escolhidos.get(i));
+            System.out.println("Saindo da JanelaPrincipal.");
         }
         
         /*int index = 0;
