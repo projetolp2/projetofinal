@@ -50,6 +50,15 @@ public class Servidor implements Runnable {
             DataInputStream inOponent = new DataInputStream(oponent.getInputStream());
             DataOutputStream outOponent = new DataOutputStream(oponent.getOutputStream());
             
+            for (int i = 0; i < escolhidos.size(); i++) {
+                out.writeUTF(escolhidos.get(i).getDica1());
+                out.writeUTF(escolhidos.get(i).getDica2());
+                out.writeUTF(escolhidos.get(i).getDica3());
+                outOponent.writeUTF(escolhidos.get(i).getDica1());
+                outOponent.writeUTF(escolhidos.get(i).getDica2());
+                outOponent.writeUTF(escolhidos.get(i).getDica3());
+            }
+            
             //testando servidor;
             System.out.println("SERVIDOR - CLIENTE 1: " + s);
             System.out.println("SERVIDOR - CLIENTE 2: " + oponent);

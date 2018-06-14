@@ -92,14 +92,14 @@ public class TelaInicial extends javax.swing.JFrame {
             
             //quando dois clientes se conectão o jogo começa;
             if(in.readUTF().equals("conectado")){
-                /*while (escolhidos.size() != 10) {
+                while (escolhidos.size() != 10) {
                     escolhidos.add(in.readUTF());
                     if (escolhidos.size() == 10) {
                         for (int i = 0; i < escolhidos.size(); i++) {
                             System.out.println(escolhidos.get(i));
                         }
                     }
-                }*/
+                }
                 //fechando a janela do transição.
                 //tt.dispose();
 
