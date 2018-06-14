@@ -8,6 +8,7 @@ package JanelaInicial;
 import JanelasAjuda.JanelaDistriEletronica;
 import JanelasAjuda.JanelaPeriodo;
 import JanelasAjuda.JanelaRaioAtomico;
+import Servidor.ElementosServidor;
 import java.net.Socket;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -28,7 +29,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     JLabel familias; //Labels para as familias.
     ArrayList<Elementos> arrayElem = new ArrayList();
     //ArrayList<Elementos> escolhidos = new ArrayList();
-    ArrayList<Elementos> escolhidos;
+    ArrayList<ElementosServidor> escolhidos; //Aqui eu vou armazenar os botoes com os 10 elementos que vem do servidor. Agora o Servidor que cria a lista dos 40 e escolhe 10.
     
     /**
      * Creates new form JanelaPrincipal
@@ -40,9 +41,19 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela.
         socket = s;
         escolhidos = esc;
+        for (int i = 0; i < escolhidos.size(); i++) { //Aqui eu imprimo na tela os elementos e as dicas de cada elemento para saber qual eh o elemento da vez. Enquanto nao consigo por as dicas na tela, esse eh o unico jeito que eu bolei.
+            System.out.println("Elemento da Janela Principal: " + escolhidos.get(i).getNome());
+            System.out.println("Dica1 do elemento: " + escolhidos.get(i).getDica1());
+            System.out.println("Dica2 do elemento: " + escolhidos.get(i).getDica2());
+            System.out.println("Dica3 do elemento: " + escolhidos.get(i).getDica3());
+        }
         System.out.println("janela principal " + socket);
         
         hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
+        hidrogenio.setElementos(escolhidos);
+        //jLabelDica1.setText(escolhidos.get(0).getDica1()); //Nessas linhas eu tentei colocar as dicas na tela... mas era aqui que dava o erro do Index... Se quiser testar, basta descomentar.
+        //jLabelDica2.setText(escolhidos.get(0).getDica2());
+        //jLabelDica3.setText(escolhidos.get(0).getDica3());
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
         posX = hidrogenio.getX(); //Posiçao de referencia X.
         posY = hidrogenio.getY(); //Posiçao de referencia Y.
@@ -601,11 +612,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             }
         }
         
-        for (int i = 0; i < escolhidos.size(); i++) {
-            System.out.println(escolhidos.get(i));
-            System.out.println("Saindo da JanelaPrincipal.");
-        }
-        
         /*int index = 0;
         Elementos elem;
         while (escolhidos.size() != 10) { //Escolhe aleatoriamente 10 elementos para começar o jogo.
@@ -622,7 +628,7 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         }*/
     }
     
-    public ArrayList getArray(){
+    /*public ArrayList getArray(){
         int index = 0;
         Elementos elem;
         while (escolhidos.size() != 10) { //Escolhe aleatoriamente 10 elementos para começar o jogo.
@@ -638,6 +644,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             }
         }
         return escolhidos;
-    }
+    }*/
 }
 

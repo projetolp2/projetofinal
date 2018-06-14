@@ -25,6 +25,9 @@ import java.util.ArrayList;
 public class TelaInicial extends javax.swing.JFrame {
     Socket test;
     ArrayList<String> escolhidos = new ArrayList();
+    Socket s;
+    DataInputStream in;
+    JanelaPrincipal frame;
     /**
      * Creates new form Tela
      */
@@ -76,8 +79,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private void btnJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogarActionPerformed
         try {
             //se conectando ao servidor;
-            Socket s = new Socket("localhost",4444);
-            DataInputStream in = new DataInputStream(s.getInputStream());
+            s = new Socket("localhost",4444);
+            in = new DataInputStream(s.getInputStream());
             
             //fechar TelaInicial;
             dispose();
@@ -89,19 +92,19 @@ public class TelaInicial extends javax.swing.JFrame {
             
             //quando dois clientes se conectão o jogo começa;
             if(in.readUTF().equals("conectado")){
-                while (escolhidos.size() != 10) {
+                /*while (escolhidos.size() != 10) {
                     escolhidos.add(in.readUTF());
                     if (escolhidos.size() == 10) {
                         for (int i = 0; i < escolhidos.size(); i++) {
                             System.out.println(escolhidos.get(i));
                         }
                     }
-                }
+                }*/
                 //fechando a janela do transição.
                 //tt.dispose();
 
                 //instancia um frame do tipo TelaPilha;
-                JanelaPrincipal frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s, escolhidos);
+                frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s, escolhidos);
 
                 //torna o frame visível;
                 frame.setVisible(true);
@@ -110,7 +113,7 @@ public class TelaInicial extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao servidor", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnJogarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

@@ -26,7 +26,7 @@ public class Hidrogenio extends Elementos{
         //super.setImagem(new ImageIcon(getClass().getResource("/Imagens/Hidrogenio.jpg")));
         setBackground(new Color(255, 255, 255, 150));
         setText("H");
-        dica1 = "UTILIZADO COMO COMBUSTÍVEL PARA FOGUETES;";
+        dica1 = "UTILIZADO COMO COMBUSTÍVEL PARA FOGUETES";
         dica2 = "POSSUI O MENOR RAIO ATÔMICO DA TABELA PERIÓDICA";
         dica3 = "POSSUI UM ÚNICO PRÓTON";
         super.setDicas(dica1, dica2, dica3);

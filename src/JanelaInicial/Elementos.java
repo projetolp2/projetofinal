@@ -5,6 +5,7 @@
  */
 package JanelaInicial;
 
+import Servidor.ElementosServidor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -27,7 +28,11 @@ public class Elementos extends JButton{
     String[] dicas = new String[3];
     JLabel label1, label2;
     ArrayList<Elementos> arrayElem;
+    ArrayList<Elementos> botoesBloqueados = new ArrayList();
+    Elementos botoesDesbloqueados;
     Botao legenda = new Botao();
+    private ArrayList<ElementosServidor> elementos;
+    int index = 0;
     
     public Elementos(JButton e, JButton n, ArrayList<Elementos> arrayElem, Socket s){ //Paineis que vem da Janela Principal.
         super();
@@ -74,21 +79,29 @@ public class Elementos extends JButton{
                     DataInputStream in = new DataInputStream(s.getInputStream());
                     DataOutputStream out = new DataOutputStream(s.getOutputStream());
                     out.writeUTF(nome);
-                        
+                    
                     //test
                     String test = in.readUTF();
                     System.out.println("Resposta do Servidor: " + test);
                     
                     if(test.equalsIgnoreCase("acertou")){
+                        elementos.remove(0);
                         JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
+                        while (!botoesBloqueados.isEmpty()) { //Tentando desbloquear os botoes mas nao funciona, teste aqui o que voce me falou no WhatsApp
+                            botoesDesbloqueados = botoesBloqueados.remove(0);
+                            botoesDesbloqueados.setEnabled(true);
+                            repaint();
+                        }
                     }else{
                         //bloqueia o botão;
                         me.getComponent().setEnabled(false);
                         me.getComponent().setBackground(null);
+                        botoesBloqueados.add((Elementos) me.getComponent());
+                        System.out.println("Tamanho da lista de botoes bloqueados: " + botoesBloqueados.size()); //Testa para ver se a lista de botoesBloqueados aumenta
                     }
-
+                    
                     //test
-                    System.out.println(nome);
+                    System.out.println(nome); //Nao apague essa linha, eh importante.
                 }
                     
             } catch (IOException ex) {
@@ -108,6 +121,10 @@ public class Elementos extends JButton{
 
     public void setNome(String nome) { //Aqui recebe o nome do elemento fornecido por cada janela (alcalinos, alcallinos-terrosos, etc) e joga nesse metodo.
         this.nome = nome;
+    }
+    
+    public String getNome(){
+        return this.nome;
     }
 
     public void setImagem(ImageIcon imageIcon) {
@@ -138,5 +155,19 @@ public class Elementos extends JButton{
     
     public String getDicas(Elementos e, int i){
         return e.dicas[i];
+    }
+
+    /**
+     * @return the elementos
+     */
+    public ArrayList<ElementosServidor> getElementos() {
+        return elementos;
+    }
+
+    /**
+     * @param elementos the elementos to set
+     */
+    public void setElementos(ArrayList<ElementosServidor> elementos) {
+        this.elementos = elementos;
     }
 }
