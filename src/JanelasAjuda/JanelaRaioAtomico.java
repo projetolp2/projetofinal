@@ -59,7 +59,7 @@ public class JanelaRaioAtomico extends javax.swing.JDialog {
         jTextArea1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("O raio atômico é uma das propriedades periódicas dos elementos químicos, e representa a distância entre o centro do núcleo de um átomo e a camada mais externa da eletrosfera (camada de valência).\n\nAo descermos nos períodos da tabela periódica, o número atômico cresce. A medida que isso ocorre, o numero de eletrons tambem aumenta e, consequentemente, o número de camadas e a distância entre o núcleo e a camada eletrônica mais externa, resultando no aumento do tamanho do átomo.\n\nDeslocando-se da esquerda para direita em um mesmo período da tabela periódica, ocorre a diminuição do raio atômico. Ao passo que nos deslocamos no período, a quantidade de prótons no núcleo cresce, resultando em um aumento da atraçao da carga positiva do núcleo e da carga negativa dos eletrons, aproximando-os do núcleo, resultando assim na diminuiçao do raio atômico.");
+        jTextArea1.setText("O raio atômico é uma das propriedades periódicas dos elementos químicos, e representa a distância entre o centro dos núcleos de dois átomos e a camada mais externa da eletrosfera (camada de valência).\n\nAo descermos nos períodos da tabela periódica, o número atômico cresce. A medida que isso ocorre, o numero de eletrons tambem aumenta e, consequentemente, o número de camadas e a distância entre o núcleo e a camada eletrônica mais externa, resultando no aumento do tamanho do átomo.\n\nDeslocando-se da esquerda para direita em um mesmo período da tabela periódica, ocorre a diminuição do raio atômico. Ao passo que nos deslocamos no período, a quantidade de prótons no núcleo cresce, resultando em um aumento da atraçao da carga positiva do núcleo e da carga negativa dos eletrons, aproximando-os do núcleo, resultando assim na diminuiçao do raio atômico.");
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setFocusable(false);
         jTextArea1.setRequestFocusEnabled(false);
@@ -82,7 +82,7 @@ public class JanelaRaioAtomico extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jButtonImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

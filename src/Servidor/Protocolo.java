@@ -21,15 +21,20 @@ public class Protocolo {
     
     public String ProcessLine(String command){
         if(command.equalsIgnoreCase(elementos.get(index).getNome())){
-            JOptionPane.showMessageDialog(null, "Acertou", "Acertou", 1); //Mensagem que acertou.
-            index++; //Aument o index para quadno acertar passar para o proximo elemento.
-            if (index == 10) { //Aqui era para encerrar a partida quadno index chegasse em 10... mas nao funciona XD
+            
+            //Aument o index para quadno acertar passar para o proximo elemento.
+            index++; 
+            
+            //Aqui era para encerrar a partida quadno index chegasse em 10... mas nao funciona XD
+            if (index == 10) { 
+                System.out.println("Consegui chegar aquiiiiiiiiiiiiiiiiiiiiiiiiii: " + index);
                 return "acabou";
             }
+            
             return "acertou";
+            
         }else{
-            JOptionPane.showMessageDialog(null, "Errou", "Errou", 0);
-            return "SERVIDOR RESPONDE: ERROUUU !!";
+            return "errou";
         }
         
     }

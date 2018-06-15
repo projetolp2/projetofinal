@@ -82,7 +82,7 @@
                 </Property>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="O raio at&#xf4;mico &#xe9; uma das propriedades peri&#xf3;dicas dos elementos qu&#xed;micos, e representa a dist&#xe2;ncia entre o centro do n&#xfa;cleo de um &#xe1;tomo e a camada mais externa da eletrosfera (camada de val&#xea;ncia).&#xa;&#xa;Ao descermos nos per&#xed;odos da tabela peri&#xf3;dica, o n&#xfa;mero at&#xf4;mico cresce. A medida que isso ocorre, o numero de eletrons tambem aumenta e, consequentemente, o n&#xfa;mero de camadas e a dist&#xe2;ncia entre o n&#xfa;cleo e a camada eletr&#xf4;nica mais externa, resultando no aumento do tamanho do &#xe1;tomo.&#xa;&#xa;Deslocando-se da esquerda para direita em um mesmo per&#xed;odo da tabela peri&#xf3;dica, ocorre a diminui&#xe7;&#xe3;o do raio at&#xf4;mico. Ao passo que nos deslocamos no per&#xed;odo, a quantidade de pr&#xf3;tons no n&#xfa;cleo cresce, resultando em um aumento da atra&#xe7;ao da carga positiva do n&#xfa;cleo e da carga negativa dos eletrons, aproximando-os do n&#xfa;cleo, resultando assim na diminui&#xe7;ao do raio at&#xf4;mico."/>
+                <Property name="text" type="java.lang.String" value="O raio at&#xf4;mico &#xe9; uma das propriedades peri&#xf3;dicas dos elementos qu&#xed;micos, e representa a dist&#xe2;ncia entre o centro dos n&#xfa;cleos de dois &#xe1;tomos e a camada mais externa da eletrosfera (camada de val&#xea;ncia).&#xa;&#xa;Ao descermos nos per&#xed;odos da tabela peri&#xf3;dica, o n&#xfa;mero at&#xf4;mico cresce. A medida que isso ocorre, o numero de eletrons tambem aumenta e, consequentemente, o n&#xfa;mero de camadas e a dist&#xe2;ncia entre o n&#xfa;cleo e a camada eletr&#xf4;nica mais externa, resultando no aumento do tamanho do &#xe1;tomo.&#xa;&#xa;Deslocando-se da esquerda para direita em um mesmo per&#xed;odo da tabela peri&#xf3;dica, ocorre a diminui&#xe7;&#xe3;o do raio at&#xf4;mico. Ao passo que nos deslocamos no per&#xed;odo, a quantidade de pr&#xf3;tons no n&#xfa;cleo cresce, resultando em um aumento da atra&#xe7;ao da carga positiva do n&#xfa;cleo e da carga negativa dos eletrons, aproximando-os do n&#xfa;cleo, resultando assim na diminui&#xe7;ao do raio at&#xf4;mico."/>
                 <Property name="wrapStyleWord" type="boolean" value="true"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
@@ -104,7 +104,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Component id="jButtonImagem" min="-2" pref="601" max="-2" attributes="0"/>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

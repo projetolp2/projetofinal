@@ -5,17 +5,11 @@
  */
 package JanelaInicial;
 
-import Servidor.Servidor;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import Servidor.*;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -25,8 +19,14 @@ import java.util.ArrayList;
 public class TelaInicial extends javax.swing.JFrame {
     Socket test;
     ArrayList<String> escolhidos = new ArrayList();
+    Jogadores jogador;
+    String[] dica1 = new String[10];
+    String[] dica2 = new String[10];
+    String[] dica3 = new String[10];
+    int index = 0;
     Socket s;
     DataInputStream in;
+    DataOutputStream out;
     JanelaPrincipal frame;
     /**
      * Creates new form Tela
@@ -81,10 +81,14 @@ public class TelaInicial extends javax.swing.JFrame {
             //se conectando ao servidor;
             s = new Socket("localhost",4444);
             in = new DataInputStream(s.getInputStream());
+            out = new DataOutputStream(s.getOutputStream());
+            jogador = new Jogadores();
             
             //fechar TelaInicial;
             dispose();
             
+            jogador.setNome(JOptionPane.showInputDialog(null, "Insira seu nome: ", "Informaçao do Jogador", 1));
+            out.writeUTF(jogador.getNome());
             //aguardando um novo cliente para iniciar a partida;
             //TeladeTransicao tt = new TeladeTransicao();
             //tt.setVisible(true);
@@ -92,20 +96,31 @@ public class TelaInicial extends javax.swing.JFrame {
             
             //quando dois clientes se conectão o jogo começa;
             if(in.readUTF().equals("conectado")){
-                while (escolhidos.size() != 10) {
-                    escolhidos.add(in.readUTF());
-                    if (escolhidos.size() == 10) {
-                        for (int i = 0; i < escolhidos.size(); i++) {
-                            System.out.println(escolhidos.get(i));
+                
+                while (index != 10) {
+                    dica1[index] = in.readUTF();
+                    dica2[index] = in.readUTF();
+                    dica3[index] = in.readUTF();
+                    if (dica1.length == 10 && dica2.length == 10 && dica3.length == 10) {
+                        for (int i = 0; i < 10; i++) {
+                            System.out.println(dica1[i]);
+                            System.out.println(dica2[i]);
+                            System.out.println(dica3[i]);
                         }
                     }
+                    index++;
                 }
                 //fechando a janela do transição.
                 //tt.dispose();
+                
+                
 
                 //instancia um frame do tipo TelaPilha;
-                frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s, escolhidos);
+                frame = new JanelaPrincipal(this, rootPaneCheckingEnabled, s, dica1, dica2, dica3);
 
+                //passa o frame para a tela do jogo.
+                frame.setFrame(frame);
+                
                 //torna o frame visível;
                 frame.setVisible(true);
             }

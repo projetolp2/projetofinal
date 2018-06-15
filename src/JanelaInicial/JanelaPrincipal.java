@@ -9,8 +9,15 @@ import JanelasAjuda.JanelaDistriEletronica;
 import JanelasAjuda.JanelaPeriodo;
 import JanelasAjuda.JanelaRaioAtomico;
 import Servidor.ElementosServidor;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import static java.lang.System.in;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -20,9 +27,10 @@ import javax.swing.JOptionPane;
  */
 public class JanelaPrincipal extends javax.swing.JDialog {
     
-    Socket socket;
+    JDialog telaDoJogo;
+    static Socket socket;
     Hidrogenio hidrogenio;
-    int posX, posY, largura, altura;
+    int posX, posY, largura, altura, index = 0;
     Botao elemento = new Botao(); //Botao aonde vai o simbolo do elemento.
     Botao nomeElemento = new Botao(); //Botao aonde vai o nome do elemento.
     JLabel periodos; //Labels para os periodos.
@@ -30,30 +38,34 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     ArrayList<Elementos> arrayElem = new ArrayList();
     //ArrayList<Elementos> escolhidos = new ArrayList();
     ArrayList<ElementosServidor> escolhidos = new ArrayList(); //Aqui eu vou armazenar os botoes com os 10 elementos que vem do servidor. Agora o Servidor que cria a lista dos 40 e escolhe 10.
-    
+    String[] dica1 = new String[10];
+    String[] dica2 = new String[10];
+    String[] dica3 = new String[10];
     /**
      * Creates new form JanelaPrincipal
      */
-    public JanelaPrincipal(java.awt.Frame parent, boolean modal, Socket s, ArrayList esc) {
+    public JanelaPrincipal(java.awt.Frame parent, boolean modal, Socket s, String[] d1, String[] d2, String[] d3) {
         super(parent, modal);
         initComponents();
         
         super.setBounds(0, 0, 1365, 740); //Maximiza a tela.
         socket = s;
-        escolhidos = esc;
-        for (int i = 0; i < escolhidos.size(); i++) { //Aqui eu imprimo na tela os elementos e as dicas de cada elemento para saber qual eh o elemento da vez. Enquanto nao consigo por as dicas na tela, esse eh o unico jeito que eu bolei.
-            System.out.println("Elemento da Janela Principal: " + escolhidos);
-            /*System.out.println("Dica1 do elemento: " + escolhidos.get(i).getDica1());
-            System.out.println("Dica2 do elemento: " + escolhidos.get(i).getDica2());
-            System.out.println("Dica3 do elemento: " + escolhidos.get(i).getDica3());*/
+        for (int i = 0; i < 10; i++) {
+            dica1[i] = d1[i];
+            dica2[i] = d2[i];
+            dica3[i] = d3[i];
+        }
+        for (int i = 0; i < 10; i++) { //Aqui eu imprimo na tela os elementos e as dicas de cada elemento para saber qual eh o elemento da vez. Enquanto nao consigo por as dicas na tela, esse eh o unico jeito que eu bolei.
+            //System.out.println("Elemento da Janela Principal: " + escolhidos);
+            System.out.println("Dica1 do elemento: " + dica1[i]);
+            System.out.println("Dica2 do elemento: " + dica2[i]);
+            System.out.println("Dica3 do elemento: " + dica3[i] + "\n");
         }
         System.out.println("janela principal " + socket);
         
+        jTextAreaDicas.setText("\nDica 1: " + dica1[index] + "\n\n\n\nDica 2: " + dica2[index] + "\n\n\n\nDica 3: " + dica3[index]);
         hidrogenio = new Hidrogenio(elemento, nomeElemento, numeroAtomico, massaAtomica, arrayElem, socket);
         hidrogenio.setElementos(escolhidos);
-        jLabelDica1.setText("" + escolhidos); //Nessas linhas eu tentei colocar as dicas na tela... mas era aqui que dava o erro do Index... Se quiser testar, basta descomentar.
-        jLabelDica2.setText("" + escolhidos);
-        jLabelDica3.setText("" + escolhidos);
         hidrogenio.setLocation(hidrogenio.getLocation().x, hidrogenio.getLocation().y);
         posX = hidrogenio.getX(); //Posiçao de referencia X.
         posY = hidrogenio.getY(); //Posiçao de referencia Y.
@@ -68,6 +80,84 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         canvas.add(canvas2); //Adiciona ao canvas o painel onde vai as informaçoes dos elementos.
         //562 189
         tabelaPeriodica(); //Cria a tabela periodica.
+        
+        try{
+        
+            DataInputStream in = new DataInputStream(socket.getInputStream());
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            
+            String nomeJogador1, nomeJogador2, ponto1, ponto2;
+            
+            nomeJogador1 = in.readUTF();
+            nomeJogador2 = in.readUTF();
+            ponto1 = in.readUTF();
+            ponto2 = in.readUTF();
+            
+            jLabelJogador1.setText(nomeJogador1);
+            jLabelJogador2.setText(nomeJogador2);
+            jTextFieldJogador1.setText(ponto1);
+            jTextFieldJogador2.setText(ponto2);
+            
+            //entrada
+            new Thread(){
+                @Override
+                public void run(){
+                    String[] entrada = new String[5];
+                    try {
+                        while(true){
+                            //test
+                            System.out.println("VOU LER AGORA");
+                            
+                            //recebe a mensagem do servidor.
+                            entrada = in.readUTF().split(" ");
+                            
+                            //printa a mensagem do servidor.
+                            System.out.println("Resposta do Servidor: " + entrada[0]);
+
+                            //se a mensagem for igual a "acabou" fecha a janela do cliente.
+                            if(entrada[0].equals("acabou")){
+                                getFrame().dispose();
+                            }
+                       
+                            
+                            //se acertou, printa um parabens para eles.
+                            if(entrada[0].equalsIgnoreCase("acertou")){
+                                ++index;
+                                
+                                JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
+                                
+                                jTextAreaDicas.setText("\nDica 1: " + dica1[index] + "\n\n\n\nDica 2: " + dica2[index] + "\n\n\n\nDica 3: " + dica3[index]);
+                                
+                                if(entrada[0].equals("pontos")){
+                                
+                                }
+                                
+                            }else{
+                                
+                                /*
+                                //bloqueia o botão;
+                                me.getComponent().setEnabled(false);
+                                me.getComponent().setBackground(null);
+                                botoesBloqueados.add((Elementos) me.getComponent());
+                                System.out.println("Tamanho da lista de botoes bloqueados: " + botoesBloqueados.size()); //Testa para ver se a lista de botoesBloqueados aumenta
+                                */
+                            }
+                            //entrada
+                        }
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(Elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }.start();
+        
+        }catch (IOException ex) {
+             Logger.getLogger(Elementos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
     }
 
     /**
@@ -105,9 +195,12 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jLabel14 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jLabelDica1 = new javax.swing.JLabel();
-        jLabelDica2 = new javax.swing.JLabel();
-        jLabelDica3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDicas = new javax.swing.JTextArea();
+        jLabelJogador1 = new javax.swing.JLabel();
+        jLabelJogador2 = new javax.swing.JLabel();
+        jTextFieldJogador1 = new javax.swing.JTextField();
+        jTextFieldJogador2 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemPeriodosFamilias = new javax.swing.JMenuItem();
@@ -131,7 +224,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
-        jButton1.setOpaque(false);
         jButton1.setRequestFocusEnabled(false);
         jButton1.setVerifyInputWhenFocusTarget(false);
 
@@ -142,7 +234,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton2.setBorderPainted(false);
         jButton2.setFocusPainted(false);
         jButton2.setFocusable(false);
-        jButton2.setOpaque(false);
         jButton2.setRequestFocusEnabled(false);
         jButton2.setVerifyInputWhenFocusTarget(false);
 
@@ -155,7 +246,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton3.setBorderPainted(false);
         jButton3.setFocusPainted(false);
         jButton3.setFocusable(false);
-        jButton3.setOpaque(false);
         jButton3.setRequestFocusEnabled(false);
         jButton3.setVerifyInputWhenFocusTarget(false);
 
@@ -166,7 +256,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton4.setBorderPainted(false);
         jButton4.setFocusPainted(false);
         jButton4.setFocusable(false);
-        jButton4.setOpaque(false);
         jButton4.setRequestFocusEnabled(false);
         jButton4.setVerifyInputWhenFocusTarget(false);
 
@@ -175,7 +264,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton5.setBorderPainted(false);
         jButton5.setFocusPainted(false);
         jButton5.setFocusable(false);
-        jButton5.setOpaque(false);
         jButton5.setRequestFocusEnabled(false);
         jButton5.setVerifyInputWhenFocusTarget(false);
 
@@ -188,7 +276,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton6.setBorderPainted(false);
         jButton6.setFocusPainted(false);
         jButton6.setFocusable(false);
-        jButton6.setOpaque(false);
         jButton6.setRequestFocusEnabled(false);
         jButton6.setVerifyInputWhenFocusTarget(false);
 
@@ -199,7 +286,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton7.setBorderPainted(false);
         jButton7.setFocusPainted(false);
         jButton7.setFocusable(false);
-        jButton7.setOpaque(false);
         jButton7.setRequestFocusEnabled(false);
         jButton7.setVerifyInputWhenFocusTarget(false);
 
@@ -212,7 +298,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton9.setBorderPainted(false);
         jButton9.setFocusPainted(false);
         jButton9.setFocusable(false);
-        jButton9.setOpaque(false);
         jButton9.setRequestFocusEnabled(false);
         jButton9.setVerifyInputWhenFocusTarget(false);
 
@@ -223,7 +308,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton10.setBorderPainted(false);
         jButton10.setFocusPainted(false);
         jButton10.setFocusable(false);
-        jButton10.setOpaque(false);
         jButton10.setRequestFocusEnabled(false);
         jButton10.setVerifyInputWhenFocusTarget(false);
 
@@ -234,7 +318,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton11.setBorderPainted(false);
         jButton11.setFocusPainted(false);
         jButton11.setFocusable(false);
-        jButton11.setOpaque(false);
         jButton11.setRequestFocusEnabled(false);
         jButton11.setVerifyInputWhenFocusTarget(false);
 
@@ -243,7 +326,6 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         jButton12.setBorderPainted(false);
         jButton12.setFocusPainted(false);
         jButton12.setFocusable(false);
-        jButton12.setOpaque(false);
         jButton12.setRequestFocusEnabled(false);
         jButton12.setVerifyInputWhenFocusTarget(false);
 
@@ -375,11 +457,30 @@ public class JanelaPrincipal extends javax.swing.JDialog {
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
-        jLabelDica1.setText("Dica 1:");
+        jTextAreaDicas.setEditable(false);
+        jTextAreaDicas.setColumns(20);
+        jTextAreaDicas.setLineWrap(true);
+        jTextAreaDicas.setRows(5);
+        jTextAreaDicas.setWrapStyleWord(true);
+        jTextAreaDicas.setFocusable(false);
+        jTextAreaDicas.setRequestFocusEnabled(false);
+        jTextAreaDicas.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(jTextAreaDicas);
 
-        jLabelDica2.setText("Dica 2:");
+        jLabelJogador1.setText("Jogador 1");
 
-        jLabelDica3.setText("Dica 3:");
+        jLabelJogador2.setText("Jogador 2");
+
+        jTextFieldJogador1.setEditable(false);
+        jTextFieldJogador1.setAutoscrolls(false);
+        jTextFieldJogador1.setFocusable(false);
+        jTextFieldJogador1.setRequestFocusEnabled(false);
+        jTextFieldJogador1.setVerifyInputWhenFocusTarget(false);
+
+        jTextFieldJogador2.setEditable(false);
+        jTextFieldJogador2.setFocusable(false);
+        jTextFieldJogador2.setRequestFocusEnabled(false);
+        jTextFieldJogador2.setVerifyInputWhenFocusTarget(false);
 
         javax.swing.GroupLayout canvasLayout = new javax.swing.GroupLayout(canvas);
         canvas.setLayout(canvasLayout);
@@ -388,32 +489,40 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             .addGroup(canvasLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
-                .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasLayout.createSequentialGroup()
-                        .addComponent(jLabelDica1)
-                        .addGap(264, 264, 264))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(canvasLayout.createSequentialGroup()
-                        .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDica2)
-                            .addComponent(jLabelDica3))
-                        .addContainerGap())))
+                        .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasLayout.createSequentialGroup()
+                                .addComponent(jTextFieldJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, canvasLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabelJogador1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelJogador2)
+                        .addGap(76, 76, 76))))
         );
         canvasLayout.setVerticalGroup(
             canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(canvasLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(canvasLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabelDica1)
+                        .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelJogador1)
+                            .addComponent(jLabelJogador2))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelDica2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelDica3))
-                    .addGroup(canvasLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(472, Short.MAX_VALUE))
+                        .addGroup(canvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Ajuda");
@@ -510,7 +619,17 @@ public class JanelaPrincipal extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true, null, null);
+                JanelaPrincipal dialog = new JanelaPrincipal(new javax.swing.JFrame(), true, null, null, null, null);
+                
+                try {
+                    DataInputStream in = new DataInputStream(socket.getInputStream());
+                    DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                } catch (IOException ex) {
+                    Logger.getLogger(JanelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -547,14 +666,17 @@ public class JanelaPrincipal extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelDica1;
-    private javax.swing.JLabel jLabelDica2;
-    private javax.swing.JLabel jLabelDica3;
+    private javax.swing.JLabel jLabelJogador1;
+    private javax.swing.JLabel jLabelJogador2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemPeriodosFamilias;
     private javax.swing.JMenuItem jMenuItemRaioAtomico;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaDicas;
+    private javax.swing.JTextField jTextFieldJogador1;
+    private javax.swing.JTextField jTextFieldJogador2;
     private javax.swing.JLabel massaAtomica;
     private javax.swing.JLabel numeroAtomico;
     // End of variables declaration//GEN-END:variables
@@ -627,6 +749,16 @@ public class JanelaPrincipal extends javax.swing.JDialog {
             }
         }*/
     }
+    
+    
+    public void setFrame(JDialog f){
+        this.telaDoJogo = f;
+    }
+    
+    public JDialog getFrame(){
+        return this.telaDoJogo;
+    }
+    
     
     /*public ArrayList getArray(){
         int index = 0;

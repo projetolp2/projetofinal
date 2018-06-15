@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import static java.lang.System.in;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -73,18 +74,58 @@ public class Elementos extends JButton{
             
             try {
                 if(true){
-                    System.out.println("1 - " + me.getComponent().getBackground());
+                    System.out.println("CLIKEIIIIII");
                     System.out.println("ELEMENTOS_SOCKET = " + s);
                     //variaveis que se comunicam com o servidor;
                     DataInputStream in = new DataInputStream(s.getInputStream());
                     DataOutputStream out = new DataOutputStream(s.getOutputStream());
                     out.writeUTF(nome);
+                    System.out.println("ENVIEI O NOME!!");
                     
-                    //test
-                    String test = in.readUTF();
-                    System.out.println("Resposta do Servidor: " + test);
+                    /*
+                    //entrada
+                    new Thread(){
+                        public void run(){
+                            String entrada;
+                            try {
+                                while(true){
+                                    entrada = in.readUTF();
+                                    System.out.println("Resposta do Servidor: " + entrada);
+
+                                    if(entrada.equals("acabou")){
+                                        System.out.println("SÓ FALTA O JOGO FECHAR A JANELA!!!!!");
+                                    }
+
+                                    if(entrada.equalsIgnoreCase("acertou")){
+                                        elementos.remove(0);
+                                        JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
+                                        while (!botoesBloqueados.isEmpty()) { //Tentando desbloquear os botoes mas nao funciona, teste aqui o que voce me falou no WhatsApp
+                                            botoesDesbloqueados = botoesBloqueados.remove(0);
+                                            botoesDesbloqueados.setEnabled(true);
+                                            repaint();
+                                        }
+                                    }else{
+                                        //bloqueia o botão;
+                                        me.getComponent().setEnabled(false);
+                                        me.getComponent().setBackground(null);
+                                        botoesBloqueados.add((Elementos) me.getComponent());
+                                        System.out.println("Tamanho da lista de botoes bloqueados: " + botoesBloqueados.size()); //Testa para ver se a lista de botoesBloqueados aumenta
+                                    }
+                                    //entrada
+                                    System.out.println(nome); //Nao apague essa linha, eh importante.
+                                }
+                                   
+                            } catch (IOException ex) {
+                                Logger.getLogger(Elementos.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }.start();
+                    */
+                    /*
+                    String entrada = in.readUTF();
+                    System.out.println("Resposta do Servidor: " + entrada);
                     
-                    if(test.equalsIgnoreCase("acertou")){
+                    if(entrada.equalsIgnoreCase("acertou")){
                         elementos.remove(0);
                         JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
                         while (!botoesBloqueados.isEmpty()) { //Tentando desbloquear os botoes mas nao funciona, teste aqui o que voce me falou no WhatsApp
@@ -100,8 +141,10 @@ public class Elementos extends JButton{
                         System.out.println("Tamanho da lista de botoes bloqueados: " + botoesBloqueados.size()); //Testa para ver se a lista de botoesBloqueados aumenta
                     }
                     
-                    //test
+                    //entrada
                     System.out.println(nome); //Nao apague essa linha, eh importante.
+                    */
+                    
                 }
                     
             } catch (IOException ex) {
