@@ -112,25 +112,47 @@ public class JanelaPrincipal extends javax.swing.JDialog {
                             entrada = in.readUTF().split(" ");
                             
                             //printa a mensagem do servidor.
-                            System.out.println("Resposta do Servidor: " + entrada[0]);
+                            System.out.println("Resposta do Servidor: " + entrada);
 
                             //se a mensagem for igual a "acabou" fecha a janela do cliente.
                             if(entrada[0].equals("acabou")){
-                                getFrame().dispose();
+                                
+                                if(entrada[2].equals("jogador")){
+                                    
+                                    int aux = Integer.parseInt(entrada[1]);
+                                    aux += Integer.parseInt(jTextFieldJogador2.getText());
+                                    TelaResultado tr = new TelaResultado(nomeJogador2, nomeJogador1, jTextFieldJogador2.getText(), jTextFieldJogador1.getText());
+                                    tr.setVisible(true);
+                                    getFrame().dispose();
+                                }else{
+                                    int aux = Integer.parseInt(entrada[1]);
+                                    aux += Integer.parseInt(jTextFieldJogador1.getText());
+                                    TelaResultado tr = new TelaResultado(nomeJogador1, nomeJogador2, jTextFieldJogador1.getText(), jTextFieldJogador2.getText());
+                                    tr.setVisible(true);
+                                    getFrame().dispose();
+                                }
                             }
                        
                             
                             //se acertou, printa um parabens para eles.
                             if(entrada[0].equalsIgnoreCase("acertou")){
+                                
+                                if(entrada[1].equals("pontos")){
+                                    jTextFieldJogador1.setText(entrada[2]);
+                                    JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
+                                }
+                                
+                                if(entrada[1].equals("jogador")){
+                                    if(entrada[2].equals("pontos")){
+                                        jTextFieldJogador2.setText(entrada[3]);
+                                    }
+                                }
+                                
                                 ++index;
                                 
-                                JOptionPane.showMessageDialog(null, "VOCÊ ACERTOU !!", "PARABÉNS", JOptionPane.PLAIN_MESSAGE);
                                 
                                 jTextAreaDicas.setText("\nDica 1: " + dica1[index] + "\n\n\n\nDica 2: " + dica2[index] + "\n\n\n\nDica 3: " + dica3[index]);
                                 
-                                if(entrada[0].equals("pontos")){
-                                
-                                }
                                 
                             }else{
                                 

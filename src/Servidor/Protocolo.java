@@ -28,7 +28,7 @@ public class Protocolo {
             //Aqui era para encerrar a partida quadno index chegasse em 10... mas nao funciona XD
             if (index == 10) { 
                 System.out.println("Consegui chegar aquiiiiiiiiiiiiiiiiiiiiiiiiii: " + index);
-                return "acabou";
+                return "acabou 10";
             }
             
             return "acertou";

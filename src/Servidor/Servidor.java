@@ -33,7 +33,6 @@ public class Servidor implements Runnable {
     static String[] dica3 = new String[10];
     static String nomeJogador1, nomeJogador2;
     static int ponto1 = 0, ponto2 = 0;
-    
     //metodo construtor.
      public Servidor(Socket ns, Socket oponente){
         this.s = ns;
@@ -100,29 +99,28 @@ public class Servidor implements Runnable {
            
                             //processa as mensagens.
                             String processo1 = protocolo.ProcessLine(cliente1);
-                            String processo2 = protocolo.ProcessLine(cliente1);
+                            //String processo2 = protocolo.ProcessLine(cliente1);
                             
-                            if(processo1.equals("acabou")){
+                            if(processo1.equals("acabou 10")){
+                                
                                 out.writeUTF(processo1);
-                                outOponent.writeUTF(processo1);
+                                outOponent.writeUTF(processo1 + " jogador");
                             }
                             else if(processo1.equals("acertou")){
-                                //manda essa mensagem processada para os clientes.
-                                out.writeUTF(processo1);
-                                outOponent.writeUTF(processo2);
+
                                 
                                 //envia os pontos.
                                 ponto1 += 10;
                                 
-                                //passando os pontos.
-                                out.writeUTF("pontos " + String.valueOf(ponto1));
-                                outOponent.writeUTF("pontos" + String.valueOf(ponto1));
+                                //manda essa mensagem processada para os clientes.
+                                out.writeUTF("acertou pontos " + String.valueOf(ponto1));
+                                outOponent.writeUTF("acertou jogador pontos " + String.valueOf(ponto1));
                             }
                             
                             else{
                                 //manda essa mensagem processada para os clientes.
-                                out.writeUTF(processo1);
-                                outOponent.writeUTF(processo1);
+                                out.writeUTF("errou");
+                                outOponent.writeUTF("errou");
 
                             }
                             
@@ -143,19 +141,32 @@ public class Servidor implements Runnable {
                 
                 //processa as mensagens.
                 String process1 = protocolo.ProcessLine(cliente2);
-                String process2 = protocolo.ProcessLine(cliente2);
+                //String process2 = protocolo.ProcessLine(cliente2);
                             
                 //printa essa mensagem.
                 System.out.println(cliente2);
                 
-                if(process1.equals("acabou")){
+                if(process1.equals("acabou 10")){
                     outOponent.writeUTF(process1);
-                    out.writeUTF(process1);
-                }else{
+                    out.writeUTF(process1 + " jogador");
+                    
+                }else if (process1.equals("acertou")){
+
+                    
+                    //envia os pontos.
+                    ponto2 += 10;
+                    
                     //enviar uma resposta para os clientes.
-                    outOponent.writeUTF(process1);
-                    out.writeUTF(process2);
+                    outOponent.writeUTF("acertou pontos " + ponto2);
+                    out.writeUTF("acertou jogador pontos " + ponto2);
+                    
+                    
                 }
+                else{
+                    outOponent.writeUTF("errou");
+                    out.writeUTF("errou");
+                }
+                
                 //testa o servidor
                 System.out.println("SERVIDOR - CHEGUEI NO FINAL");
             }
